@@ -20,7 +20,6 @@ namespace Gesture_Go_v1.Models
         public string Email { get; set; }
         [Required]
         [DataType(DataType.Password)]
-        [RegularExpression("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,10})", ErrorMessage = "Senha de 6 a 10 caracteres. Obrigatório Número, letra maiúscula e minúscula")]
         public string Senha { get; set; }
 
         public string ImgPerfil { get; set; }

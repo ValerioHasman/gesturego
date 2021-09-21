@@ -18,4 +18,5 @@ namespace Gesture_Go_v1
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
+
 }
