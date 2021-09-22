@@ -6,8 +6,7 @@ using System.Web;
 
 namespace Gesture_Go_v1.Models
 {
-    public class VMUsuario
-    {
+    
         public class Cadastro
         {
 
@@ -32,7 +31,9 @@ namespace Gesture_Go_v1.Models
 
             public int PerfilId { get; set; }
 
-        }
+            public virtual Perfil Perfil { get; set; }
+
+    }
 
         public class Acesso
         {
@@ -43,5 +44,5 @@ namespace Gesture_Go_v1.Models
             [RegularExpression("((?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,12})", ErrorMessage = "A senha deve conter aos menos uma letra maiúscula, minúscula e um número. Deve ser no mínimo 6 caracteres")]
             public string Senha { get; set; }
         }
-    }
+    
 }
