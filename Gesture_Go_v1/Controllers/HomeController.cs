@@ -60,11 +60,11 @@ namespace Gesture_Go_v1.Controllers
                 Response.Cookies.Add(cookie);
                 return RedirectToAction("About", "Home");
             }
-<<<<<<< HEAD
+
             return View("Index", ace);
-=======
+
             return View(ace);
->>>>>>> f324f28044b0a9c6e60e9e8c6c03938458cbd026
+
         }
 
         public ActionResult Cadastro()
@@ -117,11 +117,11 @@ namespace Gesture_Go_v1.Controllers
                 
                 return RedirectToAction("About");
             }
-<<<<<<< HEAD
+
             return View("Index", cad);
-=======
+
             return View(cad);
->>>>>>> f324f28044b0a9c6e60e9e8c6c03938458cbd026
+
         }
 
     }
