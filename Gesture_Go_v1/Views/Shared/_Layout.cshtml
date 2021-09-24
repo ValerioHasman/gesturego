@@ -14,6 +14,12 @@
     <div class="col-12 ">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Gesture Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
                 @Html.ActionLink("Nome do aplicativo", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
@@ -47,7 +53,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - Meu Aplicativo ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year - Gesture Go</p>
         </footer>
     </div>
 

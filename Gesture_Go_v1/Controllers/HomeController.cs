@@ -63,8 +63,6 @@ namespace Gesture_Go_v1.Controllers
 
             return View("Index", ace);
 
-            return View(ace);
-
         }
 
         public ActionResult Cadastro()
@@ -119,8 +117,6 @@ namespace Gesture_Go_v1.Controllers
             }
 
             return View("Index", cad);
-
-            return View(cad);
 
         }
 
