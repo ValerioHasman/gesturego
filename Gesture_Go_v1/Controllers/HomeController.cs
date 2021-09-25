@@ -19,14 +19,14 @@ namespace Gesture_Go_v1.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Sobre o Gesture Go.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Nossos contatos.";
 
             return View();
         }

@@ -1,5 +1,53 @@
-﻿body{
+﻿/*
+    Esquema de cores
+    
+    #66120A fonte / escuro +
+    #662E29  / escuro
+    #B31F12  / menos escuro
+    #E62A18  / vermelho
+    #EA695E fundo / claro
 
-    background-color: whitesmoke;
+*/
 
+body {
+    background-color: #EA695E;
+    color: #66120A;
 }
+
+/* botões */
+.btn-primary {
+    color: #fff;
+    background-color: #E62A18;
+    border-color: #662E29;
+}
+
+    .btn-primary:hover {
+        color: #fff;
+        background-color: #B31F12;
+        border-color: #B31F12;
+    }
+
+    .btn-primary:focus, .btn-primary.focus {
+        color: #fff;
+        background-color: #E62A18;
+        border-color: #E62A18;
+        box-shadow: 0 0 0 0.2rem rgba(179, 31, 18, 0.5);
+    }
+
+    .btn-primary.disabled, .btn-primary:disabled {
+        color: #fff;
+        background-color: #E62A18;
+        border-color: #E62A18;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+    .show > .btn-primary.dropdown-toggle {
+        color: #fff;
+        background-color: #B31F12;
+        border-color: #B31F12;
+    }
+
+    .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+    .show > .btn-primary.dropdown-toggle:focus {
+        box-shadow: 0 0 0 0.2rem rgba(179, 31, 18, 0.5);
+    }
