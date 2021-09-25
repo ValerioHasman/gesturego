@@ -11,7 +11,8 @@
 <body >
 
 
-    
+        @if (User.Identity.IsAuthenticated)
+        {         
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="navbar-header">              
                 @Html.ActionLink("Gesture Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
@@ -41,6 +42,7 @@
                 </ul>
             </div>
         </nav>
+        }
 
     <div class="container body-content pt-5">
         @RenderBody()
