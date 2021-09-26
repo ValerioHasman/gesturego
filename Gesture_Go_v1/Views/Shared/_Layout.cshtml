@@ -13,35 +13,45 @@
 
         @if (User.Identity.IsAuthenticated)
         {         
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <div class="navbar-header">              
-                @Html.ActionLink("Gesture Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-            </div>
+        <div class="navbar-header">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item ">
-                        @Html.ActionLink("Contato", "Contact", "Home", new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item ">
-                        @Html.ActionLink("Início", "Index", "Home", new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Sobre", "About", "Home", new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item">
-                        @Html.ActionLink("Cadastrar", "cadastro", "Home", new { @class = "nav-link" })
-                    </li>
-                    <li class="nav-item ">
-                        @Html.ActionLink("Acessar", "acesso", "Home", new { @class = "nav-link" })
-                    </li>
+            @Html.ActionLink("Gesture Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 
-                </ul>
-            </div>
-        </nav>
+        </div>
+        
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    @Html.ActionLink("Contato", "Contact", "Home", new { @class = "nav-link" })
+                </li>
+                <li class="nav-item ">
+                    @Html.ActionLink("Início", "Index", "Home", new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Sobre", "About", "Home", new { @class = "nav-link" })
+                </li>
+                <li class="nav-item">
+                    @Html.ActionLink("Cadastrar", "cadastro", "Home", new { @class = "nav-link" })
+                </li>
+                <li class="nav-item ">
+                    @Html.ActionLink("Acessar", "acesso", "Home", new { @class = "nav-link" })
+                </li>
+
+            </ul>
+        </div>
+        <button class="btn btn-outline-secondary">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z" />
+            </svg>
+            @Html.ActionLink("Sair", "Sair", "Home", new { @class = "text-white" })
+        </button>   
+
+
+    </nav>
         }
 
     <div class="container body-content pt-5">

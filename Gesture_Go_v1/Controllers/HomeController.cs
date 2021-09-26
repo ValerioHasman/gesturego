@@ -17,6 +17,7 @@ namespace Gesture_Go_v1.Controllers
             return View();
         }
 
+        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Sobre o Gesture Go.";
@@ -118,6 +119,12 @@ namespace Gesture_Go_v1.Controllers
 
             return View("Index", cad);
 
+        }
+
+        public ActionResult Sair()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index");
         }
 
     }
