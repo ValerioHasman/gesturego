@@ -11,13 +11,21 @@ namespace Gesture_Go_v1.Models
     {
         public static string HashTexto(string texto, string nomeHash)
         {
-            HashAlgorithm algoritmo = HashAlgorithm.Create(nomeHash);
-            if (algoritmo == null)
+            if(texto == null)
             {
-                throw new ArgumentException("Nome de Hash incorreto", "nomeHash");
+                return "";
             }
-            byte[] hash = algoritmo.ComputeHash(Encoding.UTF8.GetBytes(texto));
-            return Convert.ToBase64String(hash);
+            else
+            {
+                HashAlgorithm algoritmo = HashAlgorithm.Create(nomeHash);
+                if (algoritmo == null)
+                {
+                    throw new ArgumentException("Nome de Hash incorreto", "nomeHash");
+                }
+                byte[] hash = algoritmo.ComputeHash(Encoding.UTF8.GetBytes(texto));
+                return Convert.ToBase64String(hash);
+            }
+           
         }
     }
 }

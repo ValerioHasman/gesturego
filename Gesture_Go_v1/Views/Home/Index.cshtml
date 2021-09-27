@@ -19,10 +19,8 @@
 
 
 
-        <div class="col-sm-6 col-md-6 mb-1">
-            <div class="p-3 m-1 mr-2 card bg-light  " style="border-radius: 5px 5px 20px 20px;">
+        <div class="col-sm-6 col-md-6 mb-1">           
                 @Html.Partial("~/Views/Home/Acesso.cshtml", new Gesture_Go_v1.Models.Acesso())
-            </div>
         </div>
 
     
@@ -33,16 +31,13 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+
                     </div>
                     <div class="modal-body">
 
                         @Html.Partial("~/Views/Home/Cadastro.cshtml", new Gesture_Go_v1.Models.Cadastro())
-
-
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-
                     </div>
+                    
                 </div>
             </div>
         </div>

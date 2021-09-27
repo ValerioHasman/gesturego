@@ -50,7 +50,7 @@ namespace Gesture_Go_v1.Controllers
                 if (usu == null)
                 {
                     ModelState.AddModelError("", "Usuário e/ou senha inválidos");
-                    return View(ace);
+                    return View("Index", ace);
                 }
                 FormsAuthentication.SetAuthCookie(usu.Id + "|" + usu.Nome, false);
                 string permissoes = usu.PerfilId.ToString();
