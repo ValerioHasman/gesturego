@@ -12,6 +12,7 @@ namespace Gesture_Go_v1.Models
 
         public DbSet<Usuario> Usuario { get; set; }
         public DbSet<Perfil> Perfil { get; set; }
+        public DbSet<Imagem> Imagem { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
@@ -27,6 +28,12 @@ namespace Gesture_Go_v1.Models
             per.ToTable("per_perfil");
             per.Property(x => x.Id).HasColumnName("per_id");
             per.Property(x => x.Descricao).HasColumnName("per_descricao");
+
+            var img = mb.Entity<Imagem>();
+            img.ToTable("img_Imagens");
+            img.Property(x => x.img_id).HasColumnName("img_id");
+            img.Property(x => x.img_local).HasColumnName("img_local");
+            img.Property(x => x.img_tipo).HasColumnName("img_tipo");
 
         }
     } 
