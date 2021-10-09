@@ -145,8 +145,10 @@
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Funcoes.cs" />
+    <Compile Include="Models\Imagem.cs" />
     <Compile Include="Models\Perfil.cs" />
     <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\VMSessao.cs" />
     <Compile Include="Models\VMUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -295,6 +297,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Imagens\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
