@@ -38,21 +38,7 @@ namespace Gesture_Go_v1.Migrations
                         PerfilId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.usu_id)
-                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
-            
-            CreateTable(
-                "dbo.VMSessaos",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        ses_timer = c.DateTime(nullable: false, precision: 0),
-                        ses_qtdImages = c.Int(nullable: false),
-                        ses_Totaltimer = c.DateTime(nullable: false, precision: 0),
-                        Imagem_img_id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.img_Imagens", t => t.Imagem_img_id);
-            
+                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);                               
         }
         
         public override void Down()
