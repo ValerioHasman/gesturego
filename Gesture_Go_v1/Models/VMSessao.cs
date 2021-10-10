@@ -8,6 +8,8 @@ namespace Gesture_Go_v1.Models
 {
     public class VMSessao
     {
+       
+        public int Id { get; set; }
         [Required]
         public DateTime ses_timer { get; set; }
         [Required]

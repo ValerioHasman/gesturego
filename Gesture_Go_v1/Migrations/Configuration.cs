@@ -21,8 +21,8 @@ namespace Gesture_Go_v1.Migrations
                 new Models.Perfil { Id = 2, Descricao = "Comum" });
 
             context.Usuario.AddOrUpdate(p => p.Email,
-                new Models.Usuario { Id = 1, Nome = "Adm", Email = "adm@a.com", Senha = "123Abc", PerfilId = 1},
-                new Models.Usuario { Id = 2, Nome = "comum", Email = "comum@a.com", Senha = "123Abc", PerfilId = 2 });
+                new Models.Usuario { Id = 1, Nome = "Adm", Email = "adm@a.com", Senha = "le6bmD9qBhPZk5wfQmvEbMgBbXYFKVKMYAdKaCsNV2sxU3ptaHJzbs+RiTKMxx1D8KAlbjkX4NwknIXuZHEvuA==", PerfilId = 1},
+                new Models.Usuario { Id = 2, Nome = "comum", Email = "comum@a.com", Senha = "le6bmD9qBhPZk5wfQmvEbMgBbXYFKVKMYAdKaCsNV2sxU3ptaHJzbs+RiTKMxx1D8KAlbjkX4NwknIXuZHEvuA==", PerfilId = 2 });
 
         }
     }

@@ -36,5 +36,7 @@ namespace Gesture_Go_v1.Models
             img.Property(x => x.img_tipo).HasColumnName("img_tipo");
 
         }
+
+        public System.Data.Entity.DbSet<Gesture_Go_v1.Models.VMSessao> VMSessaos { get; set; }
     } 
 }

@@ -59,7 +59,7 @@ namespace Gesture_Go_v1.Controllers
                 string hash = FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
                 Response.Cookies.Add(cookie);
-                return RedirectToAction("About", "Home");
+                return RedirectToAction("PaginaInicialIndex", "PaginaInicial");
             }
 
             return View("Index", ace);
@@ -124,7 +124,7 @@ namespace Gesture_Go_v1.Controllers
         public ActionResult Sair()
         {
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
     }
