@@ -12,18 +12,9 @@ namespace Gesture_Go_v1.Models
         public int img_id { get; set; }
 
         [Required]
-        public int img_local { get; set; }
-
-        public enum tipo
-        {
-            [Display(Name = "Figura Humana")]
-            Humano = 1, 
-            Animais = 2, 
-            Estruturas = 3
-        }
+        public string img_tipo { get; set; }
 
         [Required]
-        public tipo img_tipo { get; set; }
-
+        public string img_local { get; set; }
     }
 }

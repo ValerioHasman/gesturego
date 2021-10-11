@@ -17,9 +17,12 @@ namespace Gesture_Go_v1.Models
         [Required]
         public DateTime ses_Totaltimer { get; set; }
         [Required]
+        public string ses_tipo { get; set; }
+
+        [Required]
         public Imagem[] ses_images { get; set; }
         public virtual Imagem Imagem { get; set; }
 
-
     }
+    
 }

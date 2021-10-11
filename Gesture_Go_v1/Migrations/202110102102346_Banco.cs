@@ -12,8 +12,8 @@ namespace Gesture_Go_v1.Migrations
                 c => new
                     {
                         img_id = c.Int(nullable: false, identity: true),
-                        img_local = c.Int(nullable: false),
-                        img_tipo = c.Int(nullable: false),
+                        img_tipo = c.String(nullable: false, unicode: false),
+                        img_local = c.String(nullable: false, unicode: false),
                     })
                 .PrimaryKey(t => t.img_id);
             
@@ -38,7 +38,10 @@ namespace Gesture_Go_v1.Migrations
                         PerfilId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.usu_id)
-                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);                               
+                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
+            
+
+            
         }
         
         public override void Down()

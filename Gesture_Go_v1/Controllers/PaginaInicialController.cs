@@ -20,5 +20,6 @@ namespace Gesture_Go_v1.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        
     }
 }

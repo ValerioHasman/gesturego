@@ -1,51 +1,87 @@
 ﻿@model Gesture_Go_v1.Models.VMSessao
+@Styles.Render("~/Content/PgInicial.css");
 
 @{
     ViewBag.Title = "PaginaInicialIndex";
 }
 
-<h2>PaginaInicialIndex</h2>
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>VMSessao</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.ses_timer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ses_timer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ses_timer, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ses_qtdImages, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ses_qtdImages, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ses_qtdImages, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ses_Totaltimer, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ses_Totaltimer, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ses_Totaltimer, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+<div class="col-12 mb-3">
+    <div class="p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 5px 5px;">
+        Progresso
     </div>
-}
+</div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="col-12 mb-3">
+    <div class="p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 20px 20px;">
+
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="h5 text-center">Prática - Selecione Preferências</div>
+            <hr />
+            <div class="col-12 p-3">
+                <div class="row">
+
+                    <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
+                        <div class="cboCard">
+                            @Html.RadioButtonFor(s => s.ses_tipo, "Humano", new { @id = "card1" })
+                            <label for="card1">
+                                <h5>Figura Humana</h5>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
+                        <div class="   cboCard">
+                            @Html.RadioButtonFor(s => s.ses_tipo, "Animal", new { @id = "card2" })
+                            <label for="card2">
+                                <h5>Animais</h5>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
+                        <div class=" cboCard">
+                            @Html.RadioButtonFor(s => s.ses_tipo, "Estruturas", new { @id = "card3" })
+                            <label for="card3">
+                                <h5>Estruturas</h5>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ses_timer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.ses_timer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ses_timer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ses_qtdImages, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.ses_qtdImages, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ses_qtdImages, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ses_Totaltimer, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="">
+                    @Html.EditorFor(model => model.ses_Totaltimer, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ses_Totaltimer, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="form-group">
+                <div class="col-12">
+                    <input type="submit" value="Create" class="btn btn-block btn-primary" />
+                </div>
+            </div>
+        }
+
+    </div>
 </div>
