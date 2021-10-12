@@ -20,20 +20,20 @@
             @Html.AntiForgeryToken()
             <div class="h5 text-center">Prática - Selecione Preferências</div>
             <hr />
-            <div class="col-12 p-3">
+            <div class="col-12 p-2">
                 <div class="row">
 
                     <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
                         <div class="cboCard">
                             @Html.RadioButtonFor(s => s.ses_tipo, "Humano", new { @id = "card1" })
                             <label for="card1">
-                                <h5>Figura Humana</h5>
+                                <h5>Figura Humana</h5>                               
                             </label>
                         </div>
                     </div>
 
-                    <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
-                        <div class="   cboCard">
+                    <div class="col-xl-4 col-12 col-md-4 col-sm-12  p-1">
+                        <div class="cboCard">
                             @Html.RadioButtonFor(s => s.ses_tipo, "Animal", new { @id = "card2" })
                             <label for="card2">
                                 <h5>Animais</h5>
