@@ -10,10 +10,8 @@ namespace Gesture_Go_v1.Models
     {
        
         public int Id { get; set; }
-        [Display(Name ="Timer")]
         [Required]
         public DateTime ses_timer { get; set; }
-        [Display(Name = "Qtd. Images")]
         [Required]
         public int ses_qtdImages { get; set; }
         [Required]

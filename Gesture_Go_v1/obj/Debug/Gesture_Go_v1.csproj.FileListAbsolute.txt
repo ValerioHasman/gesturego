@@ -67,8 +67,6 @@ C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1
 C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.CopyComplete
 C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.dll
 C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.pdb
-C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.CriacaoBanco.resources
-C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.GenerateResource.cache
 C:\Users\Valério\source\repos\gesturego\Gesture_Go_v1\bin\Gesture_Go_v1.dll.config
 C:\Users\Valério\source\repos\gesturego\Gesture_Go_v1\bin\Gesture_Go_v1.dll
 C:\Users\Valério\source\repos\gesturego\Gesture_Go_v1\bin\Gesture_Go_v1.pdb
@@ -209,3 +207,7 @@ C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\bin\pt-br\System.Web.WebPage
 C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\bin\pt-br\System.Web.WebPages.Razor.resources.dll
 C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.CoreCompileInputs.cache
 C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.CopyComplete
+C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.Banco.resources
+C:\Users\Gui8V\Documents\MVC\Gesture_Go_v1\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.GenerateResource.cache
+C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.Banco.resources
+C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.GenerateResource.cache
