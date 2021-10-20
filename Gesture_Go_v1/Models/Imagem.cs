@@ -15,6 +15,6 @@ namespace Gesture_Go_v1.Models
         public string img_tipo { get; set; }
 
         [Required]
-        public string img_local { get; set; }
+        public string img_nome { get; set; }
     }
 }

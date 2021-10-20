@@ -32,7 +32,7 @@ namespace Gesture_Go_v1.Models
             var img = mb.Entity<Imagem>();
             img.ToTable("img_Imagens");
             img.Property(x => x.img_id).HasColumnName("img_id");
-            img.Property(x => x.img_local).HasColumnName("img_local");
+            img.Property(x => x.img_nome).HasColumnName("img_nome");
             img.Property(x => x.img_tipo).HasColumnName("img_tipo");
 
         }

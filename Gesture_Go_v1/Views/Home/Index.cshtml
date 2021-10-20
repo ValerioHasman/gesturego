@@ -2,10 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-
-
     <div class="row">
-         
 
         <div class="col-sm-6 col-md-6 mb-1">
             <div class="p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 20px 20px;">
@@ -18,13 +15,9 @@
             </div>
         </div>
 
-
-
         <div class="col-sm-6 col-md-6 mb-1">
             @Html.Partial("~/Views/Home/Acesso.cshtml", new Gesture_Go_v1.Models.Acesso())
         </div>
-
-
 
         <!-- Modal -->
         <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -34,6 +27,7 @@
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                     </div>
+
                     <div class="modal-body">
 
                         @Html.Partial("~/Views/Home/Cadastro.cshtml", new Gesture_Go_v1.Models.Cadastro())
@@ -42,5 +36,4 @@
                 </div>
             </div>
         </div>
-
     </div>

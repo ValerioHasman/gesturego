@@ -10,9 +10,19 @@ namespace Gesture_Go_v1.Controllers
 {
     public class PaginaInicialController : Controller
     {
+        private Contexto db = new Contexto();
+
         [Authorize]
         public ActionResult PaginaInicialIndex()
         {
+            return View();
+        }
+
+
+        [Authorize]
+        public ActionResult Teste()
+        {
+
             return View();
         }
 
@@ -20,12 +30,10 @@ namespace Gesture_Go_v1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PaginaInicialIndex(VMSessao ses)
         {
-            
 
-
-            ViewBag.Sessao = ses;
-            return RedirectToAction("Index", "Home");
+            return View("Teste");
         }
+
 
         public ActionResult Sair()
         {

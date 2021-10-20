@@ -6,14 +6,14 @@ namespace Gesture_Go_v1.Migrations
     using System.Data.Entity.Migrations.Infrastructure;
     using System.Resources;
     
-    [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
+    [GeneratedCode("EntityFramework.Migrations", "6.0.0-20911")]
     public sealed partial class Banco : IMigrationMetadata
     {
         private readonly ResourceManager Resources = new ResourceManager(typeof(Banco));
         
         string IMigrationMetadata.Id
         {
-            get { return "202110102102346_Banco"; }
+            get { return "202110200029123_Banco"; }
         }
         
         string IMigrationMetadata.Source
