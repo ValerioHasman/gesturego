@@ -23,7 +23,8 @@ namespace Gesture_Go_v1.Controllers
         public ActionResult Teste(VMSessao ses)
         {
             ViewBag.sessao = ses.ses_tipo;
-            return View(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
+            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
+            return View(lista);
         }
 
 

@@ -11,7 +11,7 @@ namespace Gesture_Go_v1.Models
     {
         public static string HashTexto(string texto, string nomeHash)
         {
-            if(texto == null)
+            if (texto == null)
             {
                 return "";
             }
@@ -25,7 +25,22 @@ namespace Gesture_Go_v1.Models
                 byte[] hash = algoritmo.ComputeHash(Encoding.UTF8.GetBytes(texto));
                 return Convert.ToBase64String(hash);
             }
-           
+
         }
+
+        public static List<T> Randomize<T>(List<T> list)
+        {
+            List<T> randomizedList = new List<T>();
+            Random rnd = new Random();
+            while (list.Count > 0)
+            {
+                int index = rnd.Next(0, list.Count); //pick a random item from the master list
+                randomizedList.Add(list[index]); //place it at the end of the randomized list
+                list.RemoveAt(index);
+            }
+            return randomizedList;
+        }
+
     }
+
 }

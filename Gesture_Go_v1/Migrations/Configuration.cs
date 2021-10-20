@@ -25,8 +25,9 @@ namespace Gesture_Go_v1.Migrations
                 new Models.Usuario { Id = 2, Nome = "comum", Email = "comum@a.com", Senha = "le6bmD9qBhPZk5wfQmvEbMgBbXYFKVKMYAdKaCsNV2sxU3ptaHJzbs+RiTKMxx1D8KAlbjkX4NwknIXuZHEvuA==", PerfilId = 2 });
 
            context.Imagem.AddOrUpdate(p => p.img_id,
-                new Models.Imagem {img_tipo = "Animal", img_nome = "download.jpg" });
+                new Models.Imagem {img_id = 1, img_tipo = "Animal", img_nome = "download.jpg" },
+                new Models.Imagem {img_id = 2, img_tipo = "Animal", img_nome = "04-09_gato_SITE.webp" });
 
-        }
+                }
     }
 }
