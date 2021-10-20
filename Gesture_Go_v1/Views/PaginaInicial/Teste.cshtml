@@ -1,8 +1,23 @@
-﻿
+﻿@model IEnumerable<Gesture_Go_v1.Models.Imagem>
+
 @{
     ViewBag.Title = "Teste";
 
 }
 
 <h2>Teste</h2>
-<span>@ViewBag.teste </span>
+<span>@ViewBag.sessao </span>
+
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.img_nome)
+        </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.Foto)*@
+            <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" style="max-width:70px;" />
+        </td>
+    </tr>
+}

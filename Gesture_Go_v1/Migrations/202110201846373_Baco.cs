@@ -3,7 +3,7 @@ namespace Gesture_Go_v1.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Banco : DbMigration
+    public partial class Baco : DbMigration
     {
         public override void Up()
         {
@@ -40,15 +40,12 @@ namespace Gesture_Go_v1.Migrations
                 .PrimaryKey(t => t.usu_id)
                 .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
             
-           
-            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.usu_usuario", "PerfilId", "dbo.per_perfil");
             DropIndex("dbo.usu_usuario", new[] { "PerfilId" });
-            DropTable("dbo.VMSessaos");
             DropTable("dbo.usu_usuario");
             DropTable("dbo.per_perfil");
             DropTable("dbo.img_Imagens");

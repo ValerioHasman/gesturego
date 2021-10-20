@@ -37,6 +37,6 @@ namespace Gesture_Go_v1.Models
 
         }
 
-        public System.Data.Entity.DbSet<Gesture_Go_v1.Models.VMSessao> VMSessaos { get; set; }
+
     } 
 }

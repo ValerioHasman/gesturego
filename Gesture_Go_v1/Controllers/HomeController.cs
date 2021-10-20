@@ -82,12 +82,12 @@ namespace Gesture_Go_v1.Controllers
                     ModelState.AddModelError("Email", "E-mail já cadastrado");
                     return View(cad);
                 }
+
                 Usuario usu = new Usuario();
                 usu.Nome = cad.Nome;
                 usu.Email = cad.Email;
                 usu.Senha = Funcoes.HashTexto(cad.Senha, "SHA512");
                 usu.ImgPerfil = cad.ImgPerfil;
-                usu.Perfil = new Perfil();
                 usu.PerfilId = 2;//Usuário Comum
                 
 

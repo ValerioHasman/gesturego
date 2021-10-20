@@ -20,18 +20,19 @@ namespace Gesture_Go_v1.Controllers
 
 
         [Authorize]
-        public ActionResult Teste()
+        public ActionResult Teste(VMSessao ses)
         {
-
-            return View();
+            ViewBag.sessao = ses.ses_tipo;
+            return View(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PaginaInicialIndex(VMSessao ses)
         {
 
-            return View("Teste");
+            return RedirectToAction("Teste", ses);
         }
 
 
