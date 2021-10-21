@@ -299,6 +299,7 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\PaginaInicial\PaginaInicialIndex.cshtml" />
     <Content Include="Views\PaginaInicial\Teste.cshtml" />
+    <Content Include="Views\Home\EsqueciSenha.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
