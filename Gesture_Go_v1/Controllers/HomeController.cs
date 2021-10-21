@@ -16,7 +16,14 @@ namespace Gesture_Go_v1.Controllers
         {
             return View();
         }
+
         public ActionResult EsqueciSenha()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult EsqueciSenha(string muda)
         {
             return View();
         }
