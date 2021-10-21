@@ -41,6 +41,16 @@ namespace Gesture_Go_v1.Models
             return randomizedList;
         }
 
+        public static int ConverteSegudos(DateTime tempo)
+        {
+            int segundos = 0; 
+            segundos += tempo.Second;
+            segundos += tempo.Minute * 60;
+            segundos += tempo.Hour * 3600;
+
+            return segundos;
+        }
+
     }
 
 }

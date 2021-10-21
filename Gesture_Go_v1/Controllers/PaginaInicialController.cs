@@ -22,7 +22,7 @@ namespace Gesture_Go_v1.Controllers
         [Authorize]
         public ActionResult Teste(VMSessao ses)
         {
-            ViewBag.sessao = ses.ses_tipo;
+            ViewBag.segundos = Funcoes.ConverteSegudos(ses.ses_timer);
             var lista = Funcoes.Randomize(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
             return View(lista);
         }

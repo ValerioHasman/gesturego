@@ -1,23 +1,70 @@
 ﻿@model IEnumerable<Gesture_Go_v1.Models.Imagem>
 
 @{
+
+    var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
+    var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
     ViewBag.Title = "Teste";
 
 }
 
-<h2>Teste</h2>
 
 
+<div class="col-12 mb-3">
+    <div class="p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 20px 20px;">
+        <h2>Teste</h2>
+        <div><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.img_nome)
-        </td>
-        <td>
-            @*@Html.DisplayFor(modelItem => item.Foto)*@
-            <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" style="max-width:70px;" />
-        </td>
-    </tr>
-}
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.img_nome)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Foto)*@
+                    <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" style="max-width:70px;" />
+                </td>
+            </tr>
+        }
+    </div>
+</div>
+
+<script>
+
+    var TempoRes = @tempoRestante;
+    var ContSeg = TempoRes % 60;
+
+    function FormataNumero(number) {
+        if (number < 10) return '0' + number;
+        else return '' + number;
+    }
+
+
+    function startTick() {
+        document.getElementById('TimerSegundos').innerText = FormataNumero(ContSeg);
+        document.getElementById('TimerMinutos').innerText = FormataNumero(parseInt(TempoRes/60));
+
+      
+            var _tick = setInterval(function () {
+                if (TempoRes >= 0) {
+                
+                document.getElementById('TimerSegundos').innerText = FormataNumero(ContSeg);
+                document.getElementById('TimerMinutos').innerText = FormataNumero(parseInt(TempoRes / 60));
+                if (ContSeg == 0 ) { ContSeg = 60; }
+                    TempoRes--;
+                    ContSeg--;
+                }
+                
+                else {
+                    clearInterval(_tick);
+                }
+                
+
+            }, 1000);
+    }
+
+    startTick();
+
+</script>
