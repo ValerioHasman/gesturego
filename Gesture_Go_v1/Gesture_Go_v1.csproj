@@ -163,6 +163,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagens\04-09_gato_SITE.png" />
     <Content Include="img\00-featured-gesture-drawing-sketches.jpg" />
     <Content Include="Imagens\download.jpg" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -188,7 +189,6 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <Content Include="Imagens\04-09_gato_SITE.webp" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />

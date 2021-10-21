@@ -26,7 +26,7 @@ namespace Gesture_Go_v1.Migrations
 
            context.Imagem.AddOrUpdate(p => p.img_id,
                 new Models.Imagem {img_id = 1, img_tipo = "Animal", img_nome = "download.jpg" },
-                new Models.Imagem {img_id = 2, img_tipo = "Animal", img_nome = "04-09_gato_SITE.webp" });
+                new Models.Imagem {img_id = 2, img_tipo = "Animal", img_nome = "04-09_gato_SITE.png" });
 
                 }
     }
