@@ -23,7 +23,7 @@ namespace Gesture_Go_v1.Controllers
         }
 
         [HttpPost]
-        public ActionResult EsqueciSenha(string muda)
+        public ActionResult EsqueciSenha(string email, string senha, string senhac, string codigo)
         {
             return View();
         }

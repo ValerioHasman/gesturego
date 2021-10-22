@@ -9,20 +9,29 @@
     <form method="post" class="p-3 m-1 mr-2 card bg-light shadow" style="border-radius: 5px 5px 20px 20px;">
         <div class="form-group">
             <label class="control-label">Email</label>
-            <input class="form-control" type="email" name="email" />
+            <input class="form-control" type="email" name="email" required />
         </div>
         <div class="form-group">
             <label class="control-label">Senha</label>
-            <input class="form-control" type="password" name="senha" />
+            <input class="form-control" type="password" name="senha" required />
         </div>
         <div class="form-group">
             <label class="control-label">Confirma Senha</label>
-            <input class="form-control" type="password" name="senhac" />
+            <input class="form-control" type="password" name="senhac" required />
         </div>
         <div class="form-group">
-            <label class="control-label">Código</label>
-            <input class="form-control" type="text" name="codigo" />
+            <div class="col-12">
+                <label class="control-label col-12">Código</label>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-6">
+                    <input class="form-control" type="text" name="codigo" required />
+                </div>
+                <div class="col-12 col-md-6">
+                    <button class="btn btn-primary btn-block mt-2 mt-md-0" type="button">Receber código</button>
+                </div>
+            </div>
         </div>
         <button class="btn btn-outline-primary" type="submit">Mudar senha</button>
-    </form>
+</form>
 </div>
