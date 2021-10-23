@@ -5,7 +5,7 @@
     var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
     var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
     ViewBag.Title = "Teste";
-
+    int count = 0;
 }
 
 
@@ -16,19 +16,36 @@
         <div><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
 
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.img_nome)
-                </td>
-                <td>
-                    @*@Html.DisplayFor(modelItem => item.Foto)*@
-                    <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" style="max-width:70px;" />
-                </td>
-            </tr>
-        }
+        <div id="carouselExampleControls" class="carousel slide" data-interval="0" data-ride="carousel">
+            <div class="carousel-inner">
+
+
+                @{ foreach (var item in Model)
+                    {
+                        <div class="carousel-item @( (count == 0)? "active" : "") ">
+
+                            @Html.HiddenFor(modelItem => item.img_id)
+                            <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="d-block w-100" />
+                        </div>
+                        count++;
+                    }
+                }
+
+            </div>
+            <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+        </div>
     </div>
+
+
+
+
 </div>
 
 <script>
@@ -46,21 +63,24 @@
         document.getElementById('TimerSegundos').innerText = FormataNumero(ContSeg);
         document.getElementById('TimerMinutos').innerText = FormataNumero(parseInt(TempoRes/60));
 
-      
-            var _tick = setInterval(function () {
+
+        var _tick = setInterval(function () {
+
+            if (TempoRes == 0) {$('#carouselExampleControls').carousel('next');}
                 if (TempoRes >= 0) {
-                
+
                 document.getElementById('TimerSegundos').innerText = FormataNumero(ContSeg);
                 document.getElementById('TimerMinutos').innerText = FormataNumero(parseInt(TempoRes / 60));
                 if (ContSeg == 0 ) { ContSeg = 60; }
                     TempoRes--;
                     ContSeg--;
                 }
-                
                 else {
-                    clearInterval(_tick);
+                    TempoRes = @tempoRestante;
+                    ContSeg = TempoRes % 60;
+
+
                 }
-                
 
             }, 1000);
     }
