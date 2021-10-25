@@ -1,33 +1,46 @@
 ﻿@model IEnumerable<Gesture_Go_v1.Models.Imagem>
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
 @{
-
-    var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
-    var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
-    ViewBag.Title = "Teste";
-    int count = 0;
+    Layout = null;
 }
 
-@Styles.Render("~/Content/Pratica.css")
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Gestrure Go</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css">
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/Pratica.css")
 
+</head>
+<body>
 
+    @{
 
-<div class="col-12 mb-3">
-    <div class="p-3 m-1 ml-2 card bg-light shadow">
-        <h2>Teste</h2>
+        var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
+        var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
+        ViewBag.Title = "Pratica";
+        int count = 0;
+    }
+
+    <div class="btn btn-dark" ><i class="bi bi-arrow-90deg-left"></i></div>
 
         <div class="col-4 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9;">
             <div class="btn btn-sm btn-dark col-12" id="puxador" style="cursor: move; z-index: 10;"><i class="bi bi-dash-lg p-1 text-white"></i></div>
             <div class="row">
                 <div class="col-3 text-white mt-1 text-center"><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
-                <div class="btn-group offset-1 col-5 pl-1" role="group">
+                <div class="btn-group offset-1 col-5 " role="group">
                     <div class="row">
-                        <div class="btn btn-dark col-4" i4d="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle"></i></i></div>
+                        <div class="btn btn-dark col-4" id="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle p-1"></i></i></div>
                         <div class="btn btn-dark col-4" id="pausa" onclick="Pausa()"><i class="bi bi-play-circle p-1 text-white"></i></div>
-                        <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle"></i></div>
+                        <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
                     </div>
                 </div>
-                <div class="btn btn-dark col-3 p-1" id="Post"><i class="bi bi-file-post-fill"></i></div>
+                <div class="btn btn-dark col-3 p-1" id="Post"><i class="bi bi-file-post-fill p-1"></i></div>
             </div>
         </div>
 
@@ -36,7 +49,6 @@
         <div class="col-12">
             <div id="carouselExampleControls" class="carousel slide " data-interval="0" data-ride="carousel">
                 <div class="carousel-inner">
-
 
                     @{ foreach (var item in Model)
                         {
@@ -48,17 +60,13 @@
                             count++;
                         }
                     }
+
                 </div>
             </div>
-            <span id="idimg"></span>
         </div>
-    </div>
 
 
-
-</div>
-
-<script>
+        <script>
 
     var TempoRes = @tempoRestante;
     var ContSeg = TempoRes % 60;
@@ -75,7 +83,6 @@
         var item = $(".active")
         var li = item.find("#item_img_id")
         var id = li.val();
-        document.getElementById('idimg').innerText = id;
     }
 
 
@@ -102,7 +109,6 @@
                     }
                 }
                 else {
-
                     TempoRes = @tempoRestante;
                     ContSeg = TempoRes % 60;
                 }
@@ -165,5 +171,6 @@
         else { pause = true; }
 
     }
-
-</script>
+        </script>
+</body>
+</html>

@@ -160,6 +160,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\PgInicial.css" />
+    <Content Include="Content\Pratica.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -300,6 +302,7 @@
     <Content Include="Views\PaginaInicial\PaginaInicialIndex.cshtml" />
     <Content Include="Views\PaginaInicial\Teste.cshtml" />
     <Content Include="Views\Home\EsqueciSenha.cshtml" />
+    <Content Include="Views\PaginaInicial\Pratica.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

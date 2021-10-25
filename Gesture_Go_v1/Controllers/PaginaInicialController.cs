@@ -27,13 +27,21 @@ namespace Gesture_Go_v1.Controllers
             return View(lista);
         }
 
+        [Authorize]
+        public ActionResult Pratica(VMSessao ses)
+        {
+            ViewBag.segundos = Funcoes.ConverteSegudos(ses.ses_timer);
+            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
+            return View(lista);
+        }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult PaginaInicialIndex(VMSessao ses)
         {
 
-            return RedirectToAction("Teste", ses);
+            return RedirectToAction("Pratica", ses);
         }
 
 
