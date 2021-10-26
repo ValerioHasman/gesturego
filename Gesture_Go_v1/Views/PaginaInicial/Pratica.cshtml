@@ -17,7 +17,22 @@
     @Styles.Render("~/Content/Pratica.css")
 
 </head>
+
 <body class="col-12">
+ <style>
+     .imgAjuste {
+         align-items: center;
+         bottom: 90px;
+         display: flex;
+         justify-content: center;
+         left: 50px;
+         position: fixed;
+         right: 50px;
+         text-align: center;
+         top: 60px;
+     }
+     
+ </style>
 
     @{
         var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
@@ -25,8 +40,9 @@
         ViewBag.Title = "Pratica";
         int count = 0;
     }
-    <div class="col-12 ">
-        <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left" })</i></div></a>
+
+    <div class="col-12 my-1">
+        <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left "})</i></div></a>
     </div>
 
     <div class="col-4 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9; top: 3%; left: 65%;">
@@ -46,16 +62,15 @@
 
         </br>
 
-        <div class="offset-1 col-10 ">
+        <div class="col-12 ">
             <div id="carouselExampleControls" class="carousel slide " data-interval="0" data-ride="carousel">
                 <div class="carousel-inner">
 
                     @{ foreach (var item in Model)
                         {
-                            <div class="carousel-item  @( (count == 0)? "active" : "") ">
-
+                            <div class="carousel-item   @( (count == 0)? "active" : "") ">
                                 @Html.HiddenFor(modelItem => item.img_id)
-                                <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="col-12" />
+                                <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="h-75" />
                             </div>
                             count++;
                         }
