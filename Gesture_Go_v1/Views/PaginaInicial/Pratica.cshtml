@@ -17,45 +17,45 @@
     @Styles.Render("~/Content/Pratica.css")
 
 </head>
-<body>
+<body class="col-12">
 
     @{
-
         var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
         var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
         ViewBag.Title = "Pratica";
         int count = 0;
     }
+    <div class="col-12 ">
+        <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left" })</i></div></a>
+    </div>
 
-    <div class="btn btn-dark" ><i class="bi bi-arrow-90deg-left"></i></div>
-
-        <div class="col-4 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9;">
-            <div class="btn btn-sm btn-dark col-12" id="puxador" style="cursor: move; z-index: 10;"><i class="bi bi-dash-lg p-1 text-white"></i></div>
-            <div class="row">
-                <div class="col-3 text-white mt-1 text-center"><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
-                <div class="btn-group offset-1 col-5 " role="group">
-                    <div class="row">
-                        <div class="btn btn-dark col-4" id="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle p-1"></i></i></div>
-                        <div class="btn btn-dark col-4" id="pausa" onclick="Pausa()"><i class="bi bi-play-circle p-1 text-white"></i></div>
-                        <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
-                    </div>
+    <div class="col-4 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9; top: 3%; left: 65%;">
+        <div class="btn btn-sm btn-dark col-12" id="puxador" style="cursor: move; z-index: 10;"><i class="bi bi-dash-lg p-1 text-white"></i></div>
+        <div class="row">
+            <div class="col-3 text-white mt-1 text-center"><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
+            <div class="btn-group offset-1 col-5 " role="group">
+                <div class="row">
+                    <div class="btn btn-dark col-4" id="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle p-1"></i></i></div>
+                    <div class="btn btn-dark col-4" id="pausa" onclick="Pausa()"><i class="bi bi-play-circle p-1 text-white"></i></div>
+                    <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
                 </div>
-                <div class="btn btn-dark col-3 p-1" id="Post"><i class="bi bi-file-post-fill p-1"></i></div>
             </div>
+            <div class="btn btn-dark col-3 p-1" id="Post"><i class="bi bi-file-post-fill p-1"></i></div>
         </div>
+    </div>
 
         </br>
 
-        <div class="col-12">
+        <div class="offset-1 col-10 ">
             <div id="carouselExampleControls" class="carousel slide " data-interval="0" data-ride="carousel">
                 <div class="carousel-inner">
 
                     @{ foreach (var item in Model)
                         {
-                            <div class="carousel-item @( (count == 0)? "active" : "") ">
+                            <div class="carousel-item  @( (count == 0)? "active" : "") ">
 
                                 @Html.HiddenFor(modelItem => item.img_id)
-                                <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="d-block w-100" />
+                                <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="col-12" />
                             </div>
                             count++;
                         }
@@ -64,7 +64,6 @@
                 </div>
             </div>
         </div>
-
 
         <script>
 
