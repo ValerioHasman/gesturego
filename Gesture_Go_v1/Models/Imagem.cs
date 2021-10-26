@@ -16,7 +16,6 @@ namespace Gesture_Go_v1.Models
 
         [Required]
         public string img_nome { get; set; }
-
-        
+  
     }
 }

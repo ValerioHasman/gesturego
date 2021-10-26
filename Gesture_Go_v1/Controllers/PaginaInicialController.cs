@@ -15,7 +15,7 @@ namespace Gesture_Go_v1.Controllers
         [Authorize]
         public ActionResult PaginaInicialIndex()
         {
-            ViewBag.id = Session["id"].ToString();
+           
             return View();
         }
 
