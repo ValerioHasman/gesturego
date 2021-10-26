@@ -3,7 +3,7 @@ namespace Gesture_Go_v1.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Baco : DbMigration
+    public partial class Banco : DbMigration
     {
         public override void Up()
         {
@@ -27,6 +27,22 @@ namespace Gesture_Go_v1.Migrations
                 .PrimaryKey(t => t.per_id);
             
             CreateTable(
+                "dbo.pos_posts",
+                c => new
+                    {
+                        pos_id = c.Int(nullable: false, identity: true),
+                        usu_id = c.Int(nullable: false),
+                        pos_titulo = c.String(maxLength: 200, unicode: false, storeType: "nvarchar"),
+                        img_id = c.String(unicode: false),
+                        pos_imgUpload = c.String(unicode: false),
+                        pos_status = c.Boolean(nullable: false),
+                        Imagem_img_id = c.Int(),
+                    })
+                .PrimaryKey(t => t.pos_id)
+                .ForeignKey("dbo.img_Imagens", t => t.Imagem_img_id)
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
+            
+            CreateTable(
                 "dbo.usu_usuario",
                 c => new
                     {
@@ -44,9 +60,14 @@ namespace Gesture_Go_v1.Migrations
         
         public override void Down()
         {
+            DropForeignKey("dbo.pos_posts", "usu_id", "dbo.usu_usuario");
             DropForeignKey("dbo.usu_usuario", "PerfilId", "dbo.per_perfil");
+            DropForeignKey("dbo.pos_posts", "Imagem_img_id", "dbo.img_Imagens");
+            DropIndex("dbo.pos_posts", new[] { "usu_id" });
             DropIndex("dbo.usu_usuario", new[] { "PerfilId" });
+            DropIndex("dbo.pos_posts", new[] { "Imagem_img_id" });
             DropTable("dbo.usu_usuario");
+            DropTable("dbo.pos_posts");
             DropTable("dbo.per_perfil");
             DropTable("dbo.img_Imagens");
         }

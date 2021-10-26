@@ -65,7 +65,8 @@ namespace Gesture_Go_v1.Controllers
                 }
                 FormsAuthentication.SetAuthCookie(usu.Id + "|" + usu.Nome, false);
                 string permissoes = usu.PerfilId.ToString();
-                
+                Session["id"] = usu.Id;
+
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, usu.Id + "|" + usu.Email, DateTime.Now, DateTime.Now.AddMinutes(30), false, permissoes);
                 string hash = FormsAuthentication.Encrypt(ticket);
                 HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);

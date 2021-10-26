@@ -139,15 +139,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110201846373_Baco.cs" />
-    <Compile Include="Migrations\202110201846373_Baco.Designer.cs">
-      <DependentUpon>202110201846373_Baco.cs</DependentUpon>
+    <Compile Include="Migrations\202110260445477_Banco.cs" />
+    <Compile Include="Migrations\202110260445477_Banco.Designer.cs">
+      <DependentUpon>202110260445477_Banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contexto.cs" />
     <Compile Include="Models\Funcoes.cs" />
     <Compile Include="Models\Imagem.cs" />
     <Compile Include="Models\Perfil.cs" />
+    <Compile Include="Models\Posts.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\VMSessao.cs" />
     <Compile Include="Models\VMUsuario.cs" />
@@ -319,8 +320,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110201846373_Baco.resx">
-      <DependentUpon>202110201846373_Baco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110260445477_Banco.resx">
+      <DependentUpon>202110260445477_Banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

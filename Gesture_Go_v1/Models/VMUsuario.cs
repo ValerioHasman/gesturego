@@ -33,7 +33,7 @@ namespace Gesture_Go_v1.Models
 
             public virtual Perfil Perfil { get; set; }
 
-    }
+        }
 
         public class Acesso
         {
