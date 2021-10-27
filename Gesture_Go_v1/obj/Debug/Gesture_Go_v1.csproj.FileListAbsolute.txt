@@ -277,7 +277,7 @@ C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.Cor
 C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.CopyComplete
 C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.dll
 C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.pdb
-C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.Baco.resources
 C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.GenerateResource.cache
 C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.Banco.resources
 C:\Users\Gui8V\Documents\MVC\PI\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.csproj.GenerateResource.cache
+C:\Users\valer\source\repos\gesturego\Gesture_Go_v1\obj\Debug\Gesture_Go_v1.Migrations.Banco.resources
