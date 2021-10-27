@@ -18,58 +18,75 @@
 
 </head>
 
-    @{
-        var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
-        var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
-        ViewBag.Title = "Pratica";
-        int count = 0;
-    }
+@{
+    var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
+    var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
+    ViewBag.Title = "Pratica";
+    int count = 0;
+}
 
-    <div class="col-12 my-1">
-        <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left " })</i></div></a>
-    </div>
+<div class="col-12 my-1">
+    <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left " })</i></div></a>
+</div>
 
-    <div class="col-xl-4 col-md-4 col-sm-6 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9; top: calc(100vh - 69px);">
-        <div class="btn btn-sm btn-dark col-12" id="puxador" style="cursor: move; z-index: 10;"><i class="bi bi-dash-lg p-1 text-white"></i></div>
-        <div class="row">
-            <div class="col-3 text-white mt-1 text-center"><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
-            <div class="btn-group offset-1 col-5 " role="group">
-                <div class="row">
-                    <div class="btn btn-dark col-4" id="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle p-1"></i></i></div>
-                    <div class="btn btn-dark col-4" id="pausa" onclick="Pausa()"><i class="bi bi-play-circle p-1 text-white"></i></div>
-                    <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
-                </div>
+<div class="col-xl-4 col-md-4 col-sm-6 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9; top: calc(100vh - 69px);">
+    <div class="btn btn-sm btn-dark col-12" id="puxador" style="cursor: move; z-index: 10;"><i class="bi bi-dash-lg p-1 text-white"></i></div>
+    <div class="row">
+        <div class="col-3 text-white mt-1 text-center"><span id="TimerMinutos"></span>:<span id="TimerSegundos"></span></div>
+        <div class="btn-group offset-1 col-5 " role="group">
+            <div class="row">
+                <div class="btn btn-dark col-4" id="retorna" onclick="RetomaImg()"><i class="bi bi-skip-start-circle p-1"></i></i></div>
+                <div class="btn btn-dark col-4" id="pausa" onclick="Pausa()"><i class="bi bi-play-circle p-1 text-white"></i></div>
+                <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
             </div>
-            <div class="btn btn-dark col-2 p-1" id="Post"><i class="bi bi-file-post-fill p-1"></i></div>
         </div>
+        <div class="btn btn-dark col-2 p-1" id="Post"><i class="bi bi-file-post-fill p-1" data-toggle="modal" data-target="#myModal"></i></div>
     </div>
+</div>
 
     </br>
 
-    <div class="col-12 ">
-        <div id="carouselExampleControls" class="carousel slide" data-interval="0" data-ride="carousel">
-            <div class="carousel-inner">
+<div class="col-12 ">
+    <div id="carouselExampleControls" class="carousel slide" data-interval="0" data-ride="carousel">
+        <div class="carousel-inner">
 
-                @{ foreach (var item in Model)
-                    {
+            @{ foreach (var item in Model)
+                {
 
-                        <div class="carousel-item   @( (count == 0)? "active" : "") ">
-                            <div class="col-12 d-flex justify-content-center">
-                                @Html.HiddenFor(modelItem => item.img_id)
-                                <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="img-fluid" style="border-radius: 5px;" />
-                            </div>
+                    <div class="carousel-item   @( (count == 0)? "active" : "") ">
+                        <div class="col-12 d-flex justify-content-center">
+                            @Html.HiddenFor(modelItem => item.img_id)
+                            <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="img-fluid" style="border-radius: 5px;" />
                         </div>
-                        count++;
-                    }
+                    </div>
+                    count++;
                 }
+            }
 
-            </div>
         </div>
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            </div>
+
+            <div class="modal-body">
+                @Html.Partial("~/Views/Posts/Create.cshtml", new Gesture_Go_v1.Models.Posts())
+            </div>
+
+        </div>
+    </div>
+</div>
 
 
 
-    <script>
+<script>
 
     var TempoRes = @tempoRestante;
     var ContSeg = TempoRes % 60;
@@ -174,6 +191,6 @@
         else { pause = true; }
 
     }
-    </script>
+</script>
 </body>
 </html>
