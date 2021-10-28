@@ -136,13 +136,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaginaInicialController.cs" />
-    <Compile Include="Controllers\PostsController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202110260445477_Banco.cs" />
-    <Compile Include="Migrations\202110260445477_Banco.Designer.cs">
-      <DependentUpon>202110260445477_Banco.cs</DependentUpon>
+    <Compile Include="Migrations\202110281740577_Banco.cs" />
+    <Compile Include="Migrations\202110281740577_Banco.Designer.cs">
+      <DependentUpon>202110281740577_Banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contexto.cs" />
@@ -305,11 +305,7 @@
     <Content Include="Views\PaginaInicial\Teste.cshtml" />
     <Content Include="Views\Home\EsqueciSenha.cshtml" />
     <Content Include="Views\PaginaInicial\Pratica.cshtml" />
-    <Content Include="Views\Posts\Create.cshtml" />
-    <Content Include="Views\Posts\Delete.cshtml" />
-    <Content Include="Views\Posts\Details.cshtml" />
-    <Content Include="Views\Posts\Edit.cshtml" />
-    <Content Include="Views\Posts\Index.cshtml" />
+    <Content Include="Views\Post\CriarPost.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -326,8 +322,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202110260445477_Banco.resx">
-      <DependentUpon>202110260445477_Banco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202110281740577_Banco.resx">
+      <DependentUpon>202110281740577_Banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

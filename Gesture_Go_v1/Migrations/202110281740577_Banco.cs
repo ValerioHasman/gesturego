@@ -32,14 +32,13 @@ namespace Gesture_Go_v1.Migrations
                     {
                         pos_id = c.Int(nullable: false, identity: true),
                         usu_id = c.Int(nullable: false),
-                        pos_titulo = c.String(maxLength: 200, unicode: false, storeType: "nvarchar"),
-                        img_id = c.String(unicode: false),
+                        pos_titulo = c.String(maxLength: 200, storeType: "nvarchar"),
                         pos_imgUpload = c.String(unicode: false),
                         pos_status = c.Boolean(nullable: false),
-                        Imagem_img_id = c.Int(),
+                        Imagem_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.pos_id)
-                .ForeignKey("dbo.img_Imagens", t => t.Imagem_img_id)
+                .ForeignKey("dbo.img_Imagens", t => t.Imagem_Id)
                 .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
             
             CreateTable(
@@ -47,7 +46,7 @@ namespace Gesture_Go_v1.Migrations
                 c => new
                     {
                         usu_id = c.Int(nullable: false, identity: true),
-                        usu_nome = c.String(nullable: false, maxLength: 200, unicode: false, storeType: "nvarchar"),
+                        usu_nome = c.String(nullable: false, maxLength: 200, storeType: "nvarchar"),
                         usu_email = c.String(nullable: false, unicode: false),
                         usu_senha = c.String(nullable: false, unicode: false),
                         usu_ImgPerfil = c.String(unicode: false),
@@ -62,10 +61,10 @@ namespace Gesture_Go_v1.Migrations
         {
             DropForeignKey("dbo.pos_posts", "usu_id", "dbo.usu_usuario");
             DropForeignKey("dbo.usu_usuario", "PerfilId", "dbo.per_perfil");
-            DropForeignKey("dbo.pos_posts", "Imagem_img_id", "dbo.img_Imagens");
-            DropIndex("dbo.pos_posts", new[] { "usu_id" });
+            DropForeignKey("dbo.pos_posts", "Imagem_Id", "dbo.img_Imagens");
             DropIndex("dbo.usu_usuario", new[] { "PerfilId" });
-            DropIndex("dbo.pos_posts", new[] { "Imagem_img_id" });
+            DropIndex("dbo.pos_posts", new[] { "Imagem_Id" });
+            DropIndex("dbo.pos_posts", new[] { "usu_id" });
             DropTable("dbo.usu_usuario");
             DropTable("dbo.pos_posts");
             DropTable("dbo.per_perfil");

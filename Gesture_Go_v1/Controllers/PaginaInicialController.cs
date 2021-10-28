@@ -15,7 +15,6 @@ namespace Gesture_Go_v1.Controllers
         [Authorize]
         public ActionResult PaginaInicialIndex()
         {
-           
             return View();
         }
 
@@ -24,15 +23,17 @@ namespace Gesture_Go_v1.Controllers
         public ActionResult Teste(VMSessao ses)
         {
             ViewBag.segundos = Funcoes.ConverteSegudos(ses.ses_timer);
-            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
+            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.Img_tipo == ses.ses_tipo).ToList());
             return View(lista);
         }
 
         [Authorize]
         public ActionResult Pratica(VMSessao ses)
         {
+           
+                
             ViewBag.segundos = Funcoes.ConverteSegudos(ses.ses_timer);
-            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.img_tipo == ses.ses_tipo).ToList());
+            var lista = Funcoes.Randomize(db.Imagem.Where(x => x.Img_tipo == ses.ses_tipo).ToList());
             return View(lista);
         }
 
@@ -41,7 +42,7 @@ namespace Gesture_Go_v1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult PaginaInicialIndex(VMSessao ses)
         {
-
+           
             return RedirectToAction("Pratica", ses);
         }
 

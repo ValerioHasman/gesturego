@@ -125,7 +125,7 @@ namespace Gesture_Go_v1.Controllers
                     throw raise;
                 }
                 
-                return RedirectToAction("About");
+                return RedirectToAction("Index");
             }
 
             return View("Index", cad);

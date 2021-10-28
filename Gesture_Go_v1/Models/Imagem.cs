@@ -9,13 +9,13 @@ namespace Gesture_Go_v1.Models
     public class Imagem
     {
         [Key]
-        public int img_id { get; set; }
+        public int Id { get; set; }
 
         [Required]
-        public string img_tipo { get; set; }
+        public string Img_tipo { get; set; }
 
         [Required]
-        public string img_nome { get; set; }
+        public string Img_nome { get; set; }
   
     }
 }

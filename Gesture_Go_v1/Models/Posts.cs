@@ -11,17 +11,17 @@ namespace Gesture_Go_v1.Models
         [Key]
         public int Pos_id { get; set; }
 
-        public int UsuarioId { get; set; }
-
         [MaxLength(200)]
         [MinLength(10)]
         public string Pos_Titulo { get; set; }
 
-        public string ImagemId { get; set; }
+        public bool Pos_Status { get; set; }
 
         public string Pos_imgUpload { get; set; }
 
-        public bool Pos_Status { get; set; }
+        public int UsuarioId { get; set; }
+
+        public string ImagemId { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 

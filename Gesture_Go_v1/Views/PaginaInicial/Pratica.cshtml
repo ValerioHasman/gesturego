@@ -55,8 +55,8 @@
 
                     <div class="carousel-item   @( (count == 0)? "active" : "") ">
                         <div class="col-12 d-flex justify-content-center">
-                            @Html.HiddenFor(modelItem => item.img_id)
-                            <img src="~/Imagens/@item.img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="img-fluid" style="border-radius: 5px;" />
+                            @Html.HiddenFor(modelItem => item.Id)
+                            <img src="~/Imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="img-fluid" style="border-radius: 5px;" />
                         </div>
                     </div>
                     count++;
@@ -77,13 +77,12 @@
             </div>
 
             <div class="modal-body">
-                @Html.Partial("~/Views/Posts/Create.cshtml", new Gesture_Go_v1.Models.Posts())
+                @Html.Partial("~/Views/Post/CriarPost.cshtml", new Gesture_Go_v1.Models.Posts())
             </div>
 
         </div>
     </div>
 </div>
-
 
 
 <script>
