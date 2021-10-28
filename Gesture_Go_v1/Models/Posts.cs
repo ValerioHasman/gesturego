@@ -21,7 +21,7 @@ namespace Gesture_Go_v1.Models
 
         public int UsuarioId { get; set; }
 
-        public string ImagemId { get; set; }
+        public int ImagemId { get; set; }
 
         public virtual Usuario Usuario { get; set; }
 
