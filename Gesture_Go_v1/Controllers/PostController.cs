@@ -11,15 +11,18 @@ namespace Gesture_Go_v1.Controllers
     {
         private Contexto db = new Contexto();
 
-        public ActionResult CriarPost()
+     
+        public ActionResult CriarPost(int? imgRef)
         {
-            return View();
+            TempData ["imgRefe"] = imgRef;
+            return PartialView();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CriarPost(Posts posts)
         {
+    
             posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
             posts.Pos_Status = true;
 

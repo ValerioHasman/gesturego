@@ -25,8 +25,8 @@
     int count = 0;
 }
 
-<div class="col-12 my-1">
-    <div class="btn btn-dark"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left " })</i></div></a>
+<div class="col-12 mb-1 bg-dark p-1">
+    <div class="btn btn-secondary p-1 text-white"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left " })</i></div></a>
 </div>
 
 <div class="col-xl-4 col-md-4 col-sm-6 bg-dark" id="Controle" style="border-radius: 8px 8px 8px 8px; position: absolute; z-index: 9; top: calc(100vh - 69px);">
@@ -40,7 +40,7 @@
                 <div class="btn btn-dark col-4" id="avança" onclick="ProximaImg()"><i class="bi bi-skip-end-circle p-1"></i></div>
             </div>
         </div>
-        <div class="btn btn-dark col-2 p-1" id="Post"><i class="bi bi-file-post-fill p-1" data-toggle="modal" data-target="#myModal"></i></div>
+        <div class="btn btn-dark col-2 p-1" id="Post"><i class="bi bi-file-post-fill p-1" onclick="ChamaPost()" data-toggle="modal" data-target="#myModal"></i></div>
     </div>
 </div>
 
@@ -76,8 +76,8 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            <div class="modal-body">
-                @Html.Partial("~/Views/Post/CriarPost.cshtml", new Gesture_Go_v1.Models.Posts())
+            <div class="modal-body" id="modal">
+                
             </div>
 
         </div>
@@ -100,8 +100,9 @@
 
     function PegaId() {
         var item = $(".active")
-        var li = item.find("#item_img_id")
+        var li = item.find("#item_id")
         var id = li.val();
+        return id;
     }
 
 
@@ -190,6 +191,17 @@
         else { pause = true; }
 
     }
+
+    function ChamaPost() {
+        var img = PegaId();
+            $.get("@Url.Action("CriarPost", "Post")/" + img,
+            function (data) {
+                $('#modal').html(data);
+            });
+    }
+
 </script>
+
 </body>
+
 </html>
