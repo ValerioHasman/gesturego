@@ -13,7 +13,7 @@ namespace Gesture_Go_v1.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "202110281922254_Banco"; }
+            get { return "202111021833404_Banco"; }
         }
         
         string IMigrationMetadata.Source

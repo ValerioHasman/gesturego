@@ -19,6 +19,8 @@ namespace Gesture_Go_v1.Models
 
         public string Pos_imgUpload { get; set; }
 
+        public DateTime data { get; set; }
+
         public int UsuarioId { get; set; }
 
         public int ImagemId { get; set; }

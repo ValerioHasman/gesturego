@@ -1,6 +1,6 @@
 ﻿@model Gesture_Go_v1.Models.Posts
 
-@using (Html.BeginForm("CriarPost", "Post", FormMethod.Post)) 
+@using (Html.BeginForm("CriarPost", "Post", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     

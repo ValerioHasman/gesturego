@@ -20,10 +20,12 @@ namespace Gesture_Go_v1.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult CriarPost(Posts posts)
+        public ActionResult CriarPost(Posts posts, HttpPostedFileBase[] arquivos)
         {
-    
+            string nomearq, valor;
+
             posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+            posts.data = DateTime.Now;
             posts.Pos_Status = true;
 
             if (ModelState.IsValid)

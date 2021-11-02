@@ -34,6 +34,7 @@ namespace Gesture_Go_v1.Migrations
                         pos_titulo = c.String(maxLength: 200, storeType: "nvarchar"),
                         pos_status = c.Boolean(nullable: false),
                         pos_imgUpload = c.String(unicode: false),
+                        data = c.DateTime(nullable: false, precision: 0),
                         usu_id = c.Int(nullable: false),
                         img_id = c.Int(nullable: false),
                     })
