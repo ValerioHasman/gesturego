@@ -1,9 +1,7 @@
 {
   "ExpandedNodes": [
-    "",
-    "\\Gesture_Go_v1",
-    "\\Gesture_Go_v1\\Controllers"
+    ""
   ],
-  "SelectedNode": "\\Gesture_Go_v1\\Controllers\\HomeController.cs",
+  "SelectedNode": "\\Gesture_Go_v1.sln",
   "PreviewInSolutionExplorer": false
 }

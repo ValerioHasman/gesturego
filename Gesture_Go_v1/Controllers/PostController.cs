@@ -12,32 +12,43 @@ namespace Gesture_Go_v1.Controllers
     {
         private Contexto db = new Contexto();
 
+        [Authorize]
+        public ActionResult Posts()
+        {
+            var posts = db.Posts.Where(x => x.Pos_Status).ToList();
+            return View(posts);
+        }
 
+        [Authorize]
         public ActionResult CriarPost(int? imgRef)
         {
             TempData["imgRefe"] = imgRef;
             return PartialView();
         }
 
+
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult CriarPost(Posts posts, HttpPostedFileBase[] arquivos)
+        public ActionResult CriarPost(string imgRefe, string Titulo, HttpPostedFileBase arquivo)
         {
+            Posts posts = new Posts();
+          
+
 
 
             string nomearq, valor;
             if (ModelState.IsValid)
             {
-                if (arquivos != null)
+                if (arquivo != null)
                 {
                     Funcoes.CriarDiretorio();
-                    foreach (HttpPostedFileBase flb in arquivos)
-                    {
-                        nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(flb.FileName);
-                        valor = Funcoes.UploadArquivo(flb, nomearq);
+                   
+                        nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivo.FileName);
+                        valor = Funcoes.UploadArquivo(arquivo, nomearq);
                         if (valor == "sucesso")
                         {
-                            posts.ImagemId = 2;
+                            posts.Pos_Titulo = Titulo;
+                            posts.ImagemId = Convert.ToInt32(imgRefe);
                             posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
                             posts.data = DateTime.Now;
                             posts.Pos_imgUpload = nomearq;
@@ -45,7 +56,7 @@ namespace Gesture_Go_v1.Controllers
 
                             db.Posts.Add(posts);
                             db.SaveChanges();
-                        }
+                        
                     }
                 }
             }

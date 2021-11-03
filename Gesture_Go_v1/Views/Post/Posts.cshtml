@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Gesture_Go_v1.Models.Posts>
+
+@{
+    ViewBag.Title = "Posts";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Posts</h2>
+
+<table class="table">
+
+@foreach (var item in Model) {
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pos_id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Usuario.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pos_Titulo)
+        </td>
+        <td>
+            <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />
+        </td>
+        <td>
+            <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.data)
+        </td>
+    </tr>
+
+}
+
+</table>
