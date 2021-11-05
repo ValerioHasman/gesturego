@@ -248,7 +248,9 @@
             formData.append('imagem', imagem);
 
             $.ajax({
-                dataType: "json",
+                /*dataType: "json",*/
+                contentType: false,
+                processData: false,
                 type: "POST",
                 url: "/Post/CriarPost",
                 data: formData,
