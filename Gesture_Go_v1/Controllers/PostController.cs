@@ -27,28 +27,24 @@ namespace Gesture_Go_v1.Controllers
         }
 
 
-
-        [HttpPost]
-        public ActionResult CriarPost(string imgRefe, string Titulo, HttpPostedFileBase arquivo)
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
+        public JsonResult CriarPost(string id, string titulo, HttpPostedFileBase imagem)
         {
             Posts posts = new Posts();
-          
-
-
 
             string nomearq, valor;
-            if (ModelState.IsValid)
-            {
-                if (arquivo != null)
+            
+                if (imagem != null)
                 {
                     Funcoes.CriarDiretorio();
                    
-                        nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivo.FileName);
-                        valor = Funcoes.UploadArquivo(arquivo, nomearq);
+                        nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(imagem.FileName);
+                        valor = Funcoes.UploadArquivo(imagem, nomearq);
                         if (valor == "sucesso")
                         {
-                            posts.Pos_Titulo = Titulo;
-                            posts.ImagemId = Convert.ToInt32(imgRefe);
+                            posts.Pos_Titulo = titulo;
+                            posts.ImagemId = Convert.ToInt32(id);
                             posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
                             posts.data = DateTime.Now;
                             posts.Pos_imgUpload = nomearq;
@@ -56,12 +52,12 @@ namespace Gesture_Go_v1.Controllers
 
                             db.Posts.Add(posts);
                             db.SaveChanges();
-                        
-                    }
-                }
-            }
-           
-            return View();
+                             return Json("ok");
+
+                        } else { return Json("imgGrande"); }
+
+                } else { return Json("semImg"); }
+
         }
 
     }
