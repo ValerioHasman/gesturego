@@ -52,6 +52,7 @@ namespace Gesture_Go_v1.Migrations
                         usu_senha = c.String(nullable: false, unicode: false),
                         usu_ImgPerfil = c.String(unicode: false),
                         PerfilId = c.Int(nullable: false),
+                        Hash = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.usu_id)
                 .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
