@@ -175,7 +175,7 @@ namespace Gesture_Go_v1.Controllers
                     db.Entry(usu).State = EntityState.Modified;
                     db.SaveChanges();
                     string msg = "<h3>Sistema</h3>";
-                    msg += "Para alterar sua senha <a href='http://localhost:44375/Home/Redefinir/" + usu.Hash + "'target = '_blank' > clique aqui </ a > ";
+                    msg += "Para alterar sua senha <a href='https://localhost:44375/Home/Redefinir/" + usu.Hash + "'target = '_blank' > clique aqui </ a > ";
                 Funcoes.EnviarEmail(usu.Email, "Redefinição de senha", msg);
                     TempData["MSG"] = "success|Senha redefinida com sucesso!";
                     return RedirectToAction("Index");
