@@ -88,7 +88,7 @@
                         <h4>Posts</h4>
                         <hr />
                         @*<img src="~/Imagens/@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />*@
-                        <span>Id: <input type="text" id="imgRefe" /></span>
+                        Id: <input type="text" id="imgRefe" />
                         <div class="form-group">
                             Titulo : 
                             <div class="col-md-10">                               
@@ -103,10 +103,10 @@
                             </div>
                         </div>
 
-
+                        <span id="msgerro"></span>
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-10">
-                                <input type="submit" value="Create" class="btn btn-default" />
+                                <input type="button" value="Create" id="Postar" class="btn btn-primary" />
                             </div>
                         </div>
                     </div>
@@ -230,12 +230,42 @@
 
     function ChamaPost() {
         var img = PegaId();
+        pause = true;
         $("#imgRefe").val(img);
     }
 
-    $.ajax(){
+    $("#Postar").click(function () {
+        
+        var imagem = $("#arquivo").get(0).files;
 
-    }
+        var img = PegaId();
+        var titulo = $("#Titulo").val();
+        var formData = new FormData();
+        formData.append('id', img);
+        formData.append('titulo', titulo);
+        formData.append('imagem', imagem[0]);
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: "/Post/CriarPost",
+            data: formData,
+            success: function (retorno) {
+                if (retorno == "ok") {
+                    $("#msgerro").text("Post criado");
+                }
+                else if (retorno == "semImg") {
+                    $("#msgerro").text("Anexe a imagem da prática");
+                }
+                else if (retorno == "imgGrande") {
+                    $("#msgerro").text("Tamanho de imagem muito grande");
+                }
+                else if (retorno == "n") {
+                    $("#msgerro").text("Preencha os campos corretamente");
+                }
+            }
+        });
+    });
 
 </script>
 
