@@ -59,6 +59,7 @@
                     <div class="carousel-item   @( (count == 0)? "active" : "") ">
                         <div class="col-12 d-flex justify-content-center">
                             @Html.HiddenFor(modelItem => item.Id)
+                            @Html.HiddenFor(modelItem => item.Img_nome)
                             <img src="~/Imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="img-fluid" style="border-radius: 5px;" />
                         </div>
                     </div>
@@ -76,49 +77,51 @@
         <div class="modal-content">
 
             <div class="modal-header">
+                <h4>Postar um Aconcelhamento</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            <div class="modal-body" id="modal">  
+            <div class="modal-body p-0" id="modal">  
 
-                @*@using (Html.BeginForm("CriarPost", "Post", FormMethod.Post, new { enctype = "multipart/form-data" }))
-                {*@
+                <div class="col-12 ">
 
-                    <div class="form-horizontal">
-                        <h4>Posts</h4>
-                        <hr />
-                        @*<img src="~/Imagens/@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />*@
-                        Id: <input type="text" id="imgRefe" />
-                        <div class="form-group">
-                            Titulo : 
-                            <div class="col-md-10">                               
-                                <input type="text" id="Titulo" />
-                            </div>
-                        </div>
+                    <div class="col-12 my-1">
+                        Imagem Referencia :
+                        <img src="" class="w-25" id="imgPost" style="border-radius: 5px;" />
+                        <input type="hidden" id="imgRefe" />
+                    </div>
 
-                        <div class="form-group">
-                            Upload : 
-                            <div class="col-md-10">
-                                <input id="arquivo" class="form-control" type="file" />                                
-                            </div>
-                        </div>
-
-                        <span id="msgerro"></span>
-                        <div class="form-group">
-                            <div class="col-md-offset-2 col-md-10">
-                                <input type="button" value="Create" id="Postar" class="btn btn-primary" />
-                            </div>
+                    <div class="col-12 my-2">
+                        Dúvida :
+                        <div>
+                            <input type="text" class="form-control" id="Titulo" />
                         </div>
                     </div>
-                @*}*@
 
+                    <div class="col-12 my-2">
+                        Seu sketch:
+                        <div class="col-md-10">
+                            <input id="arquivo" class="form-control-file" type="file" />
+                        </div>
+                    </div>
 
+                    <div id="msgerro"></div>
+                    <div class="col-12 my-3">
+                        <hr />
+                        <div class="col-12">
+                            <input type="button" value="Postar" id="Postar" class="btn btn-primary form-control" />
+                        </div>
+                    </div>
+                </div>
 
             </div>
 
         </div>
     </div>
 </div>
+
+
+
 
 
 <script>
@@ -139,6 +142,13 @@
         var li = item.find("#item_id")
         var id = li.val();
         return id;
+    }
+
+    function PegaImg() {
+        var item = $(".active")
+        var li = item.find("#Img_nome")
+        var img = li.val();
+        return img;
     }
 
 
@@ -238,8 +248,10 @@
 
         $("#Postar").click(function () {
 
-            var imagem = $("#arquivo").get(0).files[0];
+            var nomeImg = PegaImg();
+            $("#msgerro").text(nomeImg);
 
+            var imagem = $("#arquivo").get(0).files[0];
             var img = PegaId();
             var titulo = $("#Titulo").val();
             var formData = new FormData();
@@ -248,7 +260,6 @@
             formData.append('imagem', imagem);
 
             $.ajax({
-                /*dataType: "json",*/
                 contentType: false,
                 processData: false,
                 type: "POST",
