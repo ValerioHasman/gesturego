@@ -303,7 +303,6 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\PaginaInicial\PaginaInicialIndex.cshtml" />
     <Content Include="Views\PaginaInicial\Teste.cshtml" />
-    <Content Include="Views\Home\EsqueciSenha.cshtml" />
     <Content Include="Views\PaginaInicial\Pratica.cshtml" />
     <Content Include="Views\Post\CriarPost.cshtml" />
     <Content Include="Views\Post\Posts.cshtml" />
