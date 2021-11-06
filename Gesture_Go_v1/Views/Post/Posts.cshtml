@@ -9,27 +9,44 @@
 
 <table class="table">
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
 
-    <tr>
-
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Pos_Titulo)
-        </td>
-        <td>
-            <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />
-        </td>
-        <td>
-            <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="w-25" style="border-radius: 5px;" />
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.data)
-        </td>
-    </tr>
-
-}
+        <div class="col-12">
+            <div class="card  mb-3 shadow">
+                <div class="card-header">
+                    @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                    @Html.DisplayFor(modelItem => item.data, new { @class = "float-right" })
+                </div>
+                <div class="card-body text-secondary">
+                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
+                    <hr />
+                    <div class="col-12 ">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">                                
+                                <div class="row">
+                                    <div class="row">
+                                        <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark" style="border-radius: 5px 0px 0px 5px; width: 30%;" />
+                                        <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 30%; " />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                Comentários
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 
 </table>
+
+<script src="~/Scripts/medium-zoom.min.js"></script>
+<script>
+    mediumZoom('.zoom-dark', {
+        background: '#000',
+        margin : 50
+    })
+</script>
