@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Posts</h2>
+<div class="col-12 mb-3p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 5px 5px;">
+
+        Progresso
+
+</div>
 
 <table class="table">
 
@@ -23,12 +27,10 @@
                     <hr />
                     <div class="col-12 ">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">                                
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <div class="row">
-                                    <div class="row">
-                                        <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark" style="border-radius: 5px 0px 0px 5px; width: 30%;" />
-                                        <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 30%; " />
-                                    </div>
+                                    <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark " style="border-radius: 5px 0px 0px 5px; width: 30%;" />
+                                    <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 30%; " />
                                 </div>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-12">
@@ -47,6 +49,6 @@
 <script>
     mediumZoom('.zoom-dark', {
         background: '#000',
-        margin : 50
+        margin: 50
     })
 </script>
