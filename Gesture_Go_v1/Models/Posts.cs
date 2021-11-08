@@ -29,5 +29,7 @@ namespace Gesture_Go_v1.Models
 
         public virtual Imagem Imagem { get; set; }
 
+        public virtual ICollection<Comentarios> comentarios { get; set; }
+
     }
 }

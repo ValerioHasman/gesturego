@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Gesture_Go_v1.Controllers
 {
@@ -17,6 +18,23 @@ namespace Gesture_Go_v1.Controllers
         {
             var posts = db.Posts.Where(x => x.Pos_Status).ToList();
             return View(posts);
+        }
+
+        [Authorize]
+        public ActionResult comentarios(int id)
+        {
+            var comentarios = db.Comentarios.Where(x => x.PostsPos_id == id).ToList();
+            return View(comentarios);
+        }
+
+        [Authorize]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CriarCometario(Comentarios com)
+        {
+           com.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+
+            return View();
         }
 
         [Authorize]
@@ -58,6 +76,12 @@ namespace Gesture_Go_v1.Controllers
 
                 } else { return Json("semImg"); }
 
+        }
+
+        public ActionResult Sair()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
         }
 
     }

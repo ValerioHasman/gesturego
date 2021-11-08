@@ -5,36 +5,54 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="col-12 mb-3p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 5px 5px 5px 5px;">
+<div class="col-12 mb-3 p-3 m-1 card bg-light shadow" style="border-radius: 5px 5px 5px 5px; z-index: 0; ">
+    <div class="row">
 
-        Progresso
+        <div class="col-lg-2 col-md-2 col-sm-12 px-2 mb-2 mb-xl-0 mb-md-0 ">
+            <button id="meusPosts" class="btn btn-block btn-dark text-truncate" >
+                Meus Posts
+            </button>
+        </div>
 
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="row px-2">
+                <input id="pesquisa" class="col-11 form-control" placeholder="Buscar Posts..." style="border-radius: 5px 0px 0px 5px; z-index: 0;"/>
+                <button id="btnPesquisa" class="bi bi-search col-1 btn btn-sm btn-block btn-dark" style="border-radius: 0px 5px 5px 0px; z-index: 0;"/>
+            </div>
+        </div>
+
+    </div>
 </div>
 
-<table class="table">
 
+<table class="table">
     @foreach (var item in Model)
     {
-
         <div class="col-12">
             <div class="card  mb-3 shadow">
                 <div class="card-header">
+                    @Html.HiddenFor(modelItem => item.Pos_id)
                     @Html.DisplayFor(modelItem => item.Usuario.Nome)
-                    @Html.DisplayFor(modelItem => item.data, new { @class = "float-right" })
+                    <div class="float-right">
+                        @item.data.ToString("dd/MM/yy HH:mm")
+                    </div>
                 </div>
                 <div class="card-body text-secondary">
                     <h5 class="card-title">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
                     <hr />
-                    <div class="col-12 ">
+                    <div class="col-12">
                         <div class="row">
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                <div class="row">
-                                    <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark " style="border-radius: 5px 0px 0px 5px; width: 30%;" />
-                                    <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 30%; " />
+                            <div class="col-lg-4 col-md-4 col-sm-12">
+                                <div class="row align-content-center">                                   
+                                    <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark" style="border-radius: 5px 0px 0px 5px; width: 50%;" />
+                                    <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 50%;" />
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 col-sm-12">
-                                Comentários
+                            <div class="col-lg-8 col-md-8 col-sm-12 text-center alert-secondary">
+                                <div class=" col-12" style=" height: 200px;">
+                                    <div class="col-12">Comentários</div>
+                                    @Html.Partial("Comentarios",new { id = item.Pos_id })
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -42,13 +60,12 @@
             </div>
         </div>
     }
-
 </table>
 
 <script src="~/Scripts/medium-zoom.min.js"></script>
 <script>
     mediumZoom('.zoom-dark', {
-        background: '#000',
+        background: 'rgba(0,0,0,0.8)',
         margin: 50
     })
 </script>

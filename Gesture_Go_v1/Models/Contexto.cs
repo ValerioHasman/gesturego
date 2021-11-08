@@ -14,6 +14,7 @@ namespace Gesture_Go_v1.Models
         public DbSet<Perfil> Perfil { get; set; }
         public DbSet<Imagem> Imagem { get; set; }
         public DbSet<Posts> Posts { get; set; }
+        public DbSet<Comentarios> Comentarios { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
@@ -44,6 +45,14 @@ namespace Gesture_Go_v1.Models
             pos.Property(x => x.ImagemId).HasColumnName("img_id");
             pos.Property(x => x.Pos_imgUpload).HasColumnName("pos_imgUpload");
             pos.Property(x => x.Pos_Status).HasColumnName("pos_status");
+
+            var com = mb.Entity<Comentarios>();
+            com.ToTable("com_comentarios");
+            com.Property(x => x.Id).HasColumnName("com_id");
+            com.Property(x => x.PostsPos_id).HasColumnName("pos_id");
+            com.Property(x => x.UsuarioId).HasColumnName("usu_id");
+            com.Property(x => x.Comentario).HasColumnName("com_comentario");
+            com.Property(x => x.Data).HasColumnName("com_data");
 
         }
 
