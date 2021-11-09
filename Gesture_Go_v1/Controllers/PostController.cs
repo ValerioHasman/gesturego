@@ -21,9 +21,9 @@ namespace Gesture_Go_v1.Controllers
         }
 
         [Authorize]
-        public ActionResult comentarios(int id)
+        public ActionResult Comentarios(Posts pos)
         {
-            var comentarios = db.Comentarios.Where(x => x.PostsPos_id == id).ToList();
+            var comentarios = db.Comentarios.Where(x => x.PostsPos_id == pos.Pos_id).ToList();
             return View(comentarios);
         }
 

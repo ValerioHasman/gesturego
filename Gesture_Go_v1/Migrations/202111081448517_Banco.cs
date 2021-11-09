@@ -16,10 +16,8 @@ namespace Gesture_Go_v1.Migrations
                         usu_id = c.Int(nullable: false),
                         com_comentario = c.String(unicode: false),
                         com_data = c.DateTime(nullable: false, precision: 0),
-                        Comentarios_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.com_id)
-                .ForeignKey("dbo.com_comentarios", t => t.Comentarios_Id)
                 .ForeignKey("dbo.pos_posts", t => t.pos_id, cascadeDelete: true)
                 .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
             
@@ -82,11 +80,9 @@ namespace Gesture_Go_v1.Migrations
             DropForeignKey("dbo.pos_posts", "usu_id", "dbo.usu_usuario");
             DropForeignKey("dbo.usu_usuario", "PerfilId", "dbo.per_perfil");
             DropForeignKey("dbo.pos_posts", "img_id", "dbo.img_Imagens");
-            DropForeignKey("dbo.com_comentarios", "Comentarios_Id", "dbo.com_comentarios");
             DropIndex("dbo.usu_usuario", new[] { "PerfilId" });
             DropIndex("dbo.pos_posts", new[] { "img_id" });
             DropIndex("dbo.pos_posts", new[] { "usu_id" });
-            DropIndex("dbo.com_comentarios", new[] { "Comentarios_Id" });
             DropIndex("dbo.com_comentarios", new[] { "usu_id" });
             DropIndex("dbo.com_comentarios", new[] { "pos_id" });
             DropTable("dbo.per_perfil");

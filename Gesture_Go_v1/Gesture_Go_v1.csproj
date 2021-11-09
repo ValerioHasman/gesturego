@@ -140,9 +140,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202111080448502_Banco.cs" />
-    <Compile Include="Migrations\202111080448502_Banco.Designer.cs">
-      <DependentUpon>202111080448502_Banco.cs</DependentUpon>
+    <Compile Include="Migrations\202111081448517_Banco.cs" />
+    <Compile Include="Migrations\202111081448517_Banco.Designer.cs">
+      <DependentUpon>202111081448517_Banco.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Comentarios.cs" />
@@ -329,8 +329,8 @@
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111080448502_Banco.resx">
-      <DependentUpon>202111080448502_Banco.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111081448517_Banco.resx">
+      <DependentUpon>202111081448517_Banco.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

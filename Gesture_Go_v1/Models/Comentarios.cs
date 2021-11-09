@@ -19,8 +19,7 @@ namespace Gesture_Go_v1.Models
 
         public virtual Usuario Usuario { get; set; }
 
-        public virtual Posts Posts { get; set; }
+        public virtual Posts Posts { get; set; }  
 
-        public ICollection<Comentarios> comentarios { get; set; }
     }
 }
