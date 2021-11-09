@@ -29,7 +29,12 @@ namespace Gesture_Go_v1.Controllers
 
         [Authorize]
         public ActionResult Pratica(VMSessao ses)
-        {     
+        {
+            if (TempData["Postado"] != null)
+            {
+                ViewBag.toast = true;
+            }
+
             ViewBag.segundos = Funcoes.ConverteSegudos(ses.ses_timer);
             var lista = Funcoes.Randomize(db.Imagem.Where(x => x.Img_tipo == ses.ses_tipo).ToList());
             return View(lista);
