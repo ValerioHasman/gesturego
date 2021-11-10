@@ -61,6 +61,7 @@ namespace Gesture_Go_v1.Models
         [Required]
         public string Email { get; set; }
     }
+
     public class RedefinirSenha
     {
         public string Email { get; set; }

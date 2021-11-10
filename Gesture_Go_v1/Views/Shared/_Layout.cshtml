@@ -39,6 +39,18 @@
                         @Html.ActionLink("Progresso", "", "", new { @class = "nav-link" })
                     </li>
 
+                    @{
+                        string a = Convert.ToString(User.Identity.Name.Split('|')[2]);
+
+                        if (a == "1")
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Adiconar imagens", "", "", new { @class = "nav-link" })
+                            </li>
+                        }
+                    }
+
+
                 </ul>
             </div>
 
