@@ -107,6 +107,38 @@ namespace Gesture_Go_v1.Models
             }
 
         }
+
+        public static string UploadArquivoImagensRef(HttpPostedFileBase flpUpload, string nome)
+        {
+            try
+            {
+                double permitido = 2000;
+                if (flpUpload != null)
+                {
+                    string arq = Path.GetFileName(flpUpload.FileName);
+                    double tamanho = Convert.ToDouble(flpUpload.ContentLength) / 1024;
+                    string extensao = Path.GetExtension(flpUpload.FileName).ToLower();
+                    string diretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Imagens\\" + nome;
+                    if (tamanho > permitido)
+                        return "Tamanho Máximo permitido é de " + permitido + " kb!";
+                    else if ((extensao != ".png" && extensao != ".jpg"))
+                        return "Extensão inválida, só são permitidas .png e .jpg!";
+                    else
+                    {
+                        flpUpload.SaveAs(diretorio);
+                        return "sucesso";
+                    }
+                }
+                else
+                    return "Erro no Upload!";
+            }
+            catch
+            {
+                return "Erro no Upload";
+            }
+
+        }
+
         public static string EnviarEmail(string emailDestinatario, string assunto, string corpomsg)
         {
             try

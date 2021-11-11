@@ -1,0 +1,70 @@
+﻿@model Gesture_Go_v1.Models.Imagem
+
+@{
+    ViewBag.Title = "AddImagens";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AddImagens", "AdmImagens", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal col-12 mb-3 p-3 m-1 card bg-light shadow" style="border-radius: 5px 5px 5px 5px; z-index: 0; ">
+    <h3 class="col-12">Inserção de Imagens de referência </h3>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="col-12 my-1 m-t-2">
+    <h5>Tipo da Imagem :</h5>
+
+    <div class="col-12 text-center">
+        <div class="row">
+            <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
+                <div class="cboCard">
+                    @Html.RadioButtonFor(model => model.Img_tipo, "Humano", new { @id = "card1" })
+                    <label for="card1">
+                        <h6>Figura Humana</h6>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-12 col-md-4 col-sm-12  p-1">
+                <div class="cboCard">
+                    @Html.RadioButtonFor(model => model.Img_tipo, "Animal", new { @id = "card2" })
+                    <label for="card2">
+                        <h6>Animais</h6>
+                    </label>
+                </div>
+            </div>
+
+            <div class="col-xl-4 col-12 col-md-4 col-sm-12 p-1">
+                <div class=" cboCard">
+                    @Html.RadioButtonFor(model => model.Img_tipo, "Estruturas", new { @id = "card3" })
+                    <label for="card3">
+                        <h6>Estruturas</h6>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="form-group my-2">
+        <div class="col-12">
+            <h5>Selecione a Imagem :</h5>
+            <input name="arquivo" class="form-control p-1" type="file" />
+            @Html.ValidationMessageFor(model => model.Img_nome, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <hr>
+    <div class="form-group mt-3">
+        <div class="col-12">
+            <input type="submit" value="Adicionar" class="btn btn-block btn-primary"  />
+        </div>
+    </div>
+</div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

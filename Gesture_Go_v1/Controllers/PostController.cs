@@ -49,6 +49,11 @@ namespace Gesture_Go_v1.Controllers
         [ValidateInput(false)]
         public JsonResult CriarPost(string id, string titulo, HttpPostedFileBase imagem)
         {
+            if(titulo.Length <= 10)
+            {
+                return Json("tpequeno");
+            }
+
             Posts posts = new Posts();
 
             string nomearq, valor;
@@ -57,23 +62,23 @@ namespace Gesture_Go_v1.Controllers
                 {
                     Funcoes.CriarDiretorio();
                    
-                        nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(imagem.FileName);
-                        valor = Funcoes.UploadArquivo(imagem, nomearq);
-                        if (valor == "sucesso")
-                        {
-                            posts.Pos_Titulo = titulo;
-                            posts.ImagemId = Convert.ToInt32(id);
-                            posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
-                            posts.data = DateTime.Now;
-                            posts.Pos_imgUpload = nomearq;
-                            posts.Pos_Status = true;
+                    nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(imagem.FileName);
+                    valor = Funcoes.UploadArquivo(imagem, nomearq);
+                    if (valor == "sucesso")
+                    {
+                        posts.Pos_Titulo = titulo;
+                        posts.ImagemId = Convert.ToInt32(id);
+                        posts.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+                        posts.data = DateTime.Now;
+                        posts.Pos_imgUpload = nomearq;
+                        posts.Pos_Status = true;
 
-                            db.Posts.Add(posts);
-                            db.SaveChanges();
-                            TempData["Postado"] = "post criado com sucesso";
-                             return Json("ok");
+                        db.Posts.Add(posts);
+                        db.SaveChanges();
+                        TempData["Postado"] = "post criado com sucesso";
+                         return Json("ok");
 
-                        } else { return Json("imgGrande"); }
+                    } else { return Json("imgGrande"); }
 
                 } else { return Json("semImg"); }
         }

@@ -134,6 +134,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdmImagensController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PaginaInicialController.cs" />
     <Compile Include="Controllers\PostController.cs" />
@@ -313,6 +314,7 @@
     <Content Include="Views\Home\Redefinir.cshtml" />
     <Content Include="Views\Post\CriarComentario.cshtml" />
     <Content Include="Views\Post\Comentarios.cshtml" />
+    <Content Include="Views\AdmImagens\AddImagens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

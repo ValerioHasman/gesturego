@@ -94,7 +94,7 @@
                     <div class="col-12 my-2">
                         Dúvida :
                         <div>
-                            <input type="text" class="form-control" id="Titulo" />
+                            <input type="text" minlength="5" class="form-control" id="Titulo" />
                         </div>
                     </div>
 
@@ -289,7 +289,7 @@
                         </text>
 
                         }*@
-
+                        $("#msgerro").removeClass("text-danger");
                         $("#msgerro").addClass("text-success");
                         $("#msgerro").text("Post criado");
                         
@@ -305,6 +305,10 @@
                     else if (retorno == "n") {
                         $("#msgerro").addClass("text-danger");
                         $("#msgerro").text("Preencha os campos corretamente");
+                    }
+                    else if (retorno == "tpequeno") {
+                        $("#msgerro").addClass("text-danger");
+                        $("#msgerro").text("Pergunra muito pequena");
                     }
                 }
             });
