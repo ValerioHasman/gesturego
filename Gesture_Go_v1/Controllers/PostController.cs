@@ -20,6 +20,15 @@ namespace Gesture_Go_v1.Controllers
             return View(posts);
         }
 
+
+        [Authorize]
+        public ActionResult MeusPosts()
+        {
+            int id = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+            var posts = db.Posts.Where(x => x.UsuarioId == id).ToList();
+            return View(posts);
+        }
+
         [Authorize]
         public ActionResult Comentarios(Posts pos)
         {

@@ -315,6 +315,7 @@
     <Content Include="Views\Post\CriarComentario.cshtml" />
     <Content Include="Views\Post\Comentarios.cshtml" />
     <Content Include="Views\AdmImagens\AddImagens.cshtml" />
+    <Content Include="Views\Post\MeusPosts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

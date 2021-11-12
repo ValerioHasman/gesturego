@@ -6,19 +6,19 @@
 }
 
 
-<div class="col-12 mb-3 p-3 m-1 card bg-light shadow" style="border-radius: 5px 5px 5px 5px; z-index: 0; ">
+<div class="col-12 mb-3 p-3 m-1 card bg-light shadow" onkeyup="Pesquisar()" style="border-radius: 5px 5px 5px 5px; z-index: 0; ">
     <div class="row">
 
         <div class="col-lg-2 col-md-2 col-sm-12 px-2 mb-2 mb-xl-0 mb-md-0 ">
-            <button id="meusPosts" class="btn btn-block btn-dark text-truncate" >
-                Meus Posts
+            <button id="meusPosts" class="btn btn-block btn-dark text-truncate">
+                @Html.ActionLink("Meus Posts", "MeusPosts", "Post", new { area = "" }, new { @class = "text-white" })
             </button>
         </div>
 
         <div class="col-lg-10 col-md-10 col-sm-12">
             <div class="row px-2">
-                <input id="pesquisa" class="col-11 form-control" placeholder="Buscar Posts..." style="border-radius: 5px 0px 0px 5px; z-index: 0;"/>
-                <button id="btnPesquisa" class="bi bi-search col-1 btn btn-sm btn-block btn-dark" style="border-radius: 0px 5px 5px 0px; z-index: 0;"/>
+                <input id="pesquisa" class="col-11 form-control" placeholder="Buscar Posts..."  style="border-radius: 5px 0px 0px 5px; z-index: 0;"/>
+                <button id="btnPesquisa" class="bi bi-backspace col-1 btn btn-sm btn-block btn-dark" onclick="LimparPesquisa()" style="border-radius: 0px 5px 5px 0px; z-index: 0;" />
             </div>
         </div>
 
@@ -26,20 +26,22 @@
 </div>
 
 
-<table class="table">
+
     @foreach (var item in Model)
     {
-        <div class="col-12">
+        <div class="col-12 bloco">
             <div class="card  mb-3 shadow">
                 <div class="card-header">
                     @Html.HiddenFor(modelItem => item.Pos_id)
-                    @Html.DisplayFor(modelItem => item.Usuario.Nome)
-                    <div class="float-right">
+                    <div id="Usuario" class="float-left">
+                        @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                    </div>
+                    <div class="float-right" id="Data">
                         @item.data.ToString("dd/MM/yy HH:mm")
                     </div>
-                </div>
+                </div> 
                 <div class="card-body text-secondary">
-                    <h5 class="card-title">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
+                    <h5 class="card-title" id="Titulo">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
                     <hr />
                     <div class="col-12">
                         <div class="row">
@@ -61,12 +63,43 @@
             </div>
         </div>       
     }
-</table>
+
 
 <script src="~/Scripts/medium-zoom.min.js"></script>
+
 <script>
     mediumZoom('.zoom-dark', {
         background: 'rgba(0,0,0,0.8)',
         margin: 50
-    })
+    });
+    function Pesquisar() {
+
+        var filter = $("#pesquisa").val().toUpperCase()
+
+        var ul = $(".bloco")
+
+        for (var i = 0; i < ul.length; i++) {
+
+            var a = ul[i]
+
+            liUsuario = $(a).find("#Usuario")
+            liData = $(a).find("#Data")
+            liData = $(a).find("#Titulo")
+
+            if (liUsuario.text().toUpperCase().indexOf(filter) > -1 || liData.text().toUpperCase().indexOf(filter) > -1) {
+                $(a).show()
+            } else {
+
+                $(a).hide()
+            }
+        }
+    }
+
+
+    function LimparPesquisa() {
+        $("#pesquisa").val('')
+        Pesquisar()
+    }
+
+
 </script>
