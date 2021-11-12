@@ -19,7 +19,9 @@ namespace Gesture_Go_v1.Migrations
                     })
                 .PrimaryKey(t => t.com_id)
                 .ForeignKey("dbo.pos_posts", t => t.pos_id, cascadeDelete: true)
-                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
+                .Index(t => t.pos_id)
+                .Index(t => t.usu_id);
             
             CreateTable(
                 "dbo.pos_posts",
@@ -35,7 +37,9 @@ namespace Gesture_Go_v1.Migrations
                     })
                 .PrimaryKey(t => t.pos_id)
                 .ForeignKey("dbo.img_Imagens", t => t.img_id, cascadeDelete: true)
-                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
+                .Index(t => t.usu_id)
+                .Index(t => t.img_id);
             
             CreateTable(
                 "dbo.img_Imagens",
@@ -43,7 +47,7 @@ namespace Gesture_Go_v1.Migrations
                     {
                         img_id = c.Int(nullable: false, identity: true),
                         img_tipo = c.String(nullable: false, unicode: false),
-                        img_nome = c.String(nullable: false, unicode: false),
+                        img_nome = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.img_id);
             
@@ -60,7 +64,8 @@ namespace Gesture_Go_v1.Migrations
                         Hash = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.usu_id)
-                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
+                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true)
+                .Index(t => t.PerfilId);
             
             CreateTable(
                 "dbo.per_perfil",
@@ -71,20 +76,37 @@ namespace Gesture_Go_v1.Migrations
                     })
                 .PrimaryKey(t => t.per_id);
             
+            CreateTable(
+                "dbo.his_historicoPratica",
+                c => new
+                    {
+                        his_id = c.Int(nullable: false, identity: true),
+                        usu_id = c.Int(nullable: false),
+                        his_data = c.DateTime(nullable: false, precision: 0),
+                        his_tempoPratica = c.DateTime(nullable: false, precision: 0),
+                        his_qtdImagens = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.his_id)
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
+                .Index(t => t.usu_id);
+            
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.his_historicoPratica", "usu_id", "dbo.usu_usuario");
             DropForeignKey("dbo.com_comentarios", "usu_id", "dbo.usu_usuario");
-            DropForeignKey("dbo.com_comentarios", "pos_id", "dbo.pos_posts");
             DropForeignKey("dbo.pos_posts", "usu_id", "dbo.usu_usuario");
             DropForeignKey("dbo.usu_usuario", "PerfilId", "dbo.per_perfil");
             DropForeignKey("dbo.pos_posts", "img_id", "dbo.img_Imagens");
+            DropForeignKey("dbo.com_comentarios", "pos_id", "dbo.pos_posts");
+            DropIndex("dbo.his_historicoPratica", new[] { "usu_id" });
             DropIndex("dbo.usu_usuario", new[] { "PerfilId" });
             DropIndex("dbo.pos_posts", new[] { "img_id" });
             DropIndex("dbo.pos_posts", new[] { "usu_id" });
             DropIndex("dbo.com_comentarios", new[] { "usu_id" });
             DropIndex("dbo.com_comentarios", new[] { "pos_id" });
+            DropTable("dbo.his_historicoPratica");
             DropTable("dbo.per_perfil");
             DropTable("dbo.usu_usuario");
             DropTable("dbo.img_Imagens");

@@ -15,6 +15,7 @@ namespace Gesture_Go_v1.Models
         public DbSet<Imagem> Imagem { get; set; }
         public DbSet<Posts> Posts { get; set; }
         public DbSet<Comentarios> Comentarios { get; set; }
+        public DbSet<HistoricoPratica> HistoricoPratica { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder mb)
         {
@@ -54,8 +55,14 @@ namespace Gesture_Go_v1.Models
             com.Property(x => x.Comentario).HasColumnName("com_comentario");
             com.Property(x => x.Data).HasColumnName("com_data");
 
+            var his = mb.Entity<HistoricoPratica>();
+            his.ToTable("his_historicoPratica");
+            his.Property(x => x.Id).HasColumnName("his_id");
+            his.Property(x => x.UsuarioId).HasColumnName("usu_id");
+            his.Property(x => x.data).HasColumnName("his_data");
+            his.Property(x => x.qtdImagens).HasColumnName("his_qtdImagens");
+            his.Property(x => x.tempoPratica).HasColumnName("his_tempoPratica");
+
         }
-
-
     } 
 }
