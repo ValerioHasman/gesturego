@@ -120,7 +120,7 @@ namespace Gesture_Go_v1.Models
                     string extensao = Path.GetExtension(flpUpload.FileName).ToLower();
                     string diretorio = HttpContext.Current.Request.PhysicalApplicationPath + "Imagens\\" + nome;
                     if (tamanho > permitido)
-                        return "Tamanho Máximo permitido é de " + permitido + " kb!";
+                        return "Tamanho Máximo permitido é de  2000  kb!";
                     else if ((extensao != ".png" && extensao != ".jpg"))
                         return "Extensão inválida, só são permitidas .png e .jpg!";
                     else

@@ -15,10 +15,10 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Styles.Render("~/Content/Pratica.css")
-
 </head>
 
 @{
+    
     var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
     var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
     ViewBag.Title = "Pratica";
@@ -26,7 +26,7 @@
 }
 
 <div class="col-12 mb-1 bg-dark p-1 pl-2">
-    <div class="btn btn-secondary p-1 text-white"><i>@Html.ActionLink("Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left " })</i></div></a>
+    <div class="btn btn-outline-secondary p-1 text-white" id="finalizar"><i>@Html.ActionLink(" Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left text-white" })</i></div>
 </div>
 
 
@@ -94,7 +94,7 @@
                     <div class="col-12 my-2">
                         Dúvida :
                         <div>
-                            <input type="text" minlength="5" class="form-control" id="Titulo" />
+                            <input type="text"  class="form-control" id="Titulo" />
                         </div>
                     </div>
 
@@ -144,6 +144,8 @@
     var TempoRes = @tempoRestante;
     var ContSeg = TempoRes % 60;
     var pause = false;
+    var qtdPratica;
+
     startTick();
 
 
@@ -177,6 +179,7 @@
             if (TempoRes == 0)
             {
                 $('#carouselExampleControls').carousel('next');
+                qtdPratica++;
             }
                 if (TempoRes >= 0) {
 
@@ -292,7 +295,7 @@
                         $("#msgerro").removeClass("text-danger");
                         $("#msgerro").addClass("text-success");
                         $("#msgerro").text("Post criado");
-                        
+
                     }
                     else if (retorno == "semImg") {
                         $("#msgerro").addClass("text-danger");
@@ -313,6 +316,20 @@
                 }
             });
         });
+    });
+
+    $(".finalizar").click(function () {
+
+        if (qtdPratica != 0) {
+            var timer =  @ViewBag.timer;
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Post/HistoticoPratica",
+                data: { qtdPratica, timer},
+                success: function (retorno) {}
+            });
+        }
     });
 
 </script>

@@ -25,6 +25,7 @@ namespace Gesture_Go_v1.Controllers
         {
             string nomearq, valor;
 
+
             if (arquivo != null)
             {
                 Funcoes.CriarDiretorio();
@@ -33,18 +34,33 @@ namespace Gesture_Go_v1.Controllers
                 valor = Funcoes.UploadArquivoImagensRef(arquivo, nomearq);
                 if (valor == "sucesso")
                 {       
-                    
                     img.Img_nome = nomearq;
 
                     db.Imagem.Add(img);
                     db.SaveChanges();
+                    ViewBag.msg = "Imagem Inserida";
                     return View();
 
                 }
-                else { return View("imgGrande"); }
-
+                else if(valor == "Tamanho Máximo permitido é de  2000  kb!") {
+                    ViewBag.msg = "Imagem muito grande";
+                    return View(); 
+                }
+                else if (valor == "Extensão inválida, só são permitidas .png e .jpg!")
+                {
+                    ViewBag.msg = "Formato de arquivo Invalido !";
+                    return View();
+                }
+                else
+                {
+                    ViewBag.msg = "Erro !";
+                    return View();
+                }
             }
-            else { return View("semImg"); }
+            else {
+                ViewBag.msg = "Insira a Imagem";
+                return View(); 
+            }
         }
     }
 }

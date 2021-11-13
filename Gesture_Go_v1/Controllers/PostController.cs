@@ -92,6 +92,22 @@ namespace Gesture_Go_v1.Controllers
                 } else { return Json("semImg"); }
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
+        public JsonResult HistoticoPratica(int qtdImagem, DateTime timer)
+        {
+
+            HistoricoPratica hist = new HistoricoPratica();
+            hist.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+            hist.data = DateTime.Now;
+            hist.qtdImagens = qtdImagem;
+            hist.tempoPratica = timer;
+            db.HistoricoPratica.Add(hist);
+            db.SaveChanges();
+
+            return Json("");
+        }
+
         public ActionResult Sair()
         {
             FormsAuthentication.SignOut();
