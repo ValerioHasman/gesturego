@@ -12,12 +12,22 @@ namespace Gesture_Go_v1.Controllers
     {
         private Contexto db = new Contexto();
 
+        public ActionResult Index()
+        {
+            return View("PaginaInicialIndex");
+        }
+
         [Authorize]
         public ActionResult PaginaInicialIndex()
         {
             return View();
         }
 
+        [Authorize]
+        public ActionResult Perfil()
+        {
+            return View();
+        }
 
         [Authorize]
         public ActionResult Teste(VMSessao ses)
