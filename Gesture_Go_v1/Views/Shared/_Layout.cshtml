@@ -29,16 +29,20 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
                     <li class="nav-item ">
-                        @Html.ActionLink("Home |", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "nav-link" })
+                        @Html.ActionLink("Home", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "nav-link" })
                     </li>
-
-                    <li class="nav-item ">
-                        @Html.ActionLink("Posts |", "Posts", "Post", new { area = "" }, new { @class = "nav-link" })
-                    </li>
+                    <li class="nav-link text-muted">|</li>
                     <li class="nav-item">
-                        @Html.ActionLink("Progresso", "", "", new { @class = "nav-link" })
+                        @Html.ActionLink("Progresso", "Progresso", "PaginaInicial", new { area = "" }, new { @class = "nav-link" })
                     </li>
-
+                    <li class="nav-link text-muted">|</li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Perfil", "Perfil", "PaginaInicial", new { area = "" }, new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-link text-muted">|</li>
+                    <li class="nav-item">
+                        @Html.ActionLink("Posts", "Posts", "Post", new { area = "" }, new { @class = "nav-link" })
+                    </li>
                     @{
                         string a = Convert.ToString(User.Identity.Name.Split('|')[2]);
 
