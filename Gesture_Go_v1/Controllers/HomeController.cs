@@ -118,8 +118,6 @@ namespace Gesture_Go_v1.Controllers
                             string message = string.Format("{0}:{1}",
                                 validationErrors.Entry.Entity.ToString(),
                                 validationError.ErrorMessage);
-                            // raise a new exception nesting
-                            // the current instance as InnerException
                             raise = new InvalidOperationException(message, raise);
                         }
                     }

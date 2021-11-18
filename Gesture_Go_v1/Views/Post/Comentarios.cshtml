@@ -1,39 +1,9 @@
 ﻿@model IEnumerable<Gesture_Go_v1.Models.Comentarios>
 
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Posts.Pos_Titulo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Usuario.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Comentario)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Data)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Posts.Pos_Titulo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Usuario.Nome)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Comentario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Data)
-        </td>
 
-    </tr>
-}
 
-</table>
+
+
+

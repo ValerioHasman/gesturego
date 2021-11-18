@@ -144,7 +144,7 @@
     var TempoRes = @tempoRestante;
     var ContSeg = TempoRes % 60;
     var pause = false;
-    var qtdPratica;
+    var qtdPratica = 0;
 
     startTick();
 
@@ -316,12 +316,12 @@
                 }
             });
         });
-    });
 
-    $(".finalizar").click(function () {
+
+         $("#finalizar").click(function () {
 
         if (qtdPratica != 0) {
-            var timer =  @ViewBag.timer;
+            var timer =  '@ViewBag.timer';
             $.ajax({
                 dataType: "json",
                 type: "POST",
@@ -331,6 +331,10 @@
             });
         }
     });
+
+    });
+
+
 
 </script>
 

@@ -54,7 +54,22 @@
                             <div class="col-lg-8 col-md-8 col-sm-12 text-center alert-secondary">
                                 <div class=" col-12" style=" height: 200px;">
                                     <div class="col-12">Comentários</div>
-                                    @*@Html.Partial("Comentarios",  item)*@
+                                    @foreach (var itemCom in item.comentarios)
+                                    {
+                                        <div class="card border-dark alert-secondary">
+                                            <div class="col-12 font-weight-bolder">
+                                                @Html.DisplayFor(modelItem => itemCom.Usuario.Nome)
+                                                <div class="float-right">
+                                                    @Html.DisplayFor(modelItem => itemCom.Data)
+                                                </div>
+                                            </div>
+                                            <div class="col-12 px-4">
+                                                @Html.DisplayFor(modelItem => itemCom.Comentario)
+                                            </div>
+
+
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>

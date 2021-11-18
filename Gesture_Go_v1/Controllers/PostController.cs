@@ -30,9 +30,10 @@ namespace Gesture_Go_v1.Controllers
         }
 
         [Authorize]
-        public ActionResult Comentarios(Posts pos)
+        public ActionResult Comentarios(int id)
         {
-            var comentarios = db.Comentarios.Where(x => x.PostsPos_id == pos.Pos_id).ToList();
+
+            var comentarios = db.Comentarios.Where(x => x.PostsPos_id == id).ToList();
             return View(comentarios);
         }
 
@@ -94,13 +95,13 @@ namespace Gesture_Go_v1.Controllers
 
         [AcceptVerbs(HttpVerbs.Post)]
         [ValidateInput(false)]
-        public JsonResult HistoticoPratica(int qtdImagem, DateTime timer)
+        public JsonResult HistoticoPratica(int qtdPratica, DateTime timer)
         {
 
             HistoricoPratica hist = new HistoricoPratica();
             hist.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
             hist.data = DateTime.Now;
-            hist.qtdImagens = qtdImagem;
+            hist.qtdImagens = qtdPratica;
             hist.tempoPratica = timer;
             db.HistoricoPratica.Add(hist);
             db.SaveChanges();
