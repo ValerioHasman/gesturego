@@ -13,6 +13,7 @@ namespace Gesture_Go_v1.Controllers
     public class HomeController : Controller
     {
         private Contexto db = new Contexto();
+
         public ActionResult Index()
         {
             return View();
@@ -29,7 +30,6 @@ namespace Gesture_Go_v1.Controllers
             return View();
         }
 
-        [Authorize]
         public ActionResult About()
         {
             ViewBag.Message = "Sobre o Gesture Go.";
@@ -37,17 +37,8 @@ namespace Gesture_Go_v1.Controllers
             return View();
         }
 
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Nossos contatos.";
-
-            return View();
-        }
-
-
         public ActionResult Acesso()
         {
-
             return View();
         }
 

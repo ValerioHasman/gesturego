@@ -292,7 +292,6 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Acesso.cshtml" />
     <Content Include="Views\Home\Cadastro.cshtml" />
@@ -317,6 +316,8 @@
     <Content Include="Views\Post\Comentarios.cshtml" />
     <Content Include="Views\AdmImagens\AddImagens.cshtml" />
     <Content Include="Views\Post\MeusPosts.cshtml" />
+    <Content Include="Views\PaginaInicial\Perfil.cshtml" />
+    <Content Include="Views\PaginaInicial\Progresso.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

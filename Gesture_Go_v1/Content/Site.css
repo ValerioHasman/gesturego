@@ -15,9 +15,20 @@ body {
     background-size: cover;
 }
 
+.divfoto {
+    padding-right: 15px;    
+    padding-left: 15px;
+}
 
+.imagemperfil {
+    width: 400px;
+    height: 400px;
+    object-fit: cover;
+}
 
-
-
-
-    
+@media (max-width:500px){
+    .imagemperfil {
+        width: 100px;
+        height: 100px;
+    }
+}
