@@ -17,7 +17,7 @@
 
         <div class="col-lg-10 col-md-10 col-sm-12">
             <div class="row px-2">
-                <input id="pesquisa" class="col-11 form-control" placeholder="Buscar Posts..."  style="border-radius: 5px 0px 0px 5px; z-index: 0;"/>
+                <input id="pesquisa" class="col-11 form-control" placeholder="Buscar Posts..." style="border-radius: 5px 0px 0px 5px; z-index: 0;" />
                 <button id="btnPesquisa" class="bi bi-backspace col-1 btn btn-sm btn-block btn-dark" onclick="LimparPesquisa()" style="border-radius: 0px 5px 5px 0px; z-index: 0;" />
             </div>
         </div>
@@ -27,57 +27,70 @@
 
 
 
-    @foreach (var item in Model)
-    {
-        <div class="col-12 bloco">
-            <div class="card  mb-3 shadow">
-                <div class="card-header">
-                    @Html.HiddenFor(modelItem => item.Pos_id)
-                    <div id="Usuario" class="float-left">
-                        @Html.DisplayFor(modelItem => item.Usuario.Nome)
-                    </div>
-                    <div class="float-right" id="Data">
-                        @item.data.ToString("dd/MM/yy HH:mm")
-                    </div>
-                </div> 
-                <div class="card-body text-secondary">
-                    <h5 class="card-title" id="Titulo">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
-                    <hr />
-                    <div class="col-12">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-12">
-                                <div class="row align-content-center">                                   
-                                    <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark" style="border-radius: 5px 0px 0px 5px; width: 50%;" />
-                                    <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 50%;" />
-                                </div>
+@foreach (var item in Model)
+{
+    <div class="col-12 bloco ">
+        <div class="card  mb-3 shadow">
+            <div class="card-header">
+                @Html.HiddenFor(modelItem => item.Pos_id)
+                <div id="Usuario" class="float-left font-weight-bold">
+                    @Html.DisplayFor(modelItem => item.Usuario.Nome)
+                </div>
+                <div class="float-right h6" id="Data">
+                    @item.data.ToString("dd/MM/yy HH:mm")
+                </div>
+            </div>
+            <div class="card-body text-secondary">
+                <h5 class="card-title" id="Titulo">@Html.DisplayFor(modelItem => item.Pos_Titulo)</h5>
+                <hr />
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-12">
+                            <div class="row align-content-center shadow">
+                                <img src="~/Uploads/@item.Pos_imgUpload?@DateTime.Now.ToString("yyyyMMddHHmmss")" class="zoom-dark" style="border-radius: 5px 0px 0px 5px; width: 50%;" />
+                                <img src="~/Imagens/@item.Imagem.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" class=" zoom-dark" style="border-radius: 0px 5px 5px 0px; width: 50%;" />
                             </div>
-                            <div class="col-lg-8 col-md-8 col-sm-12 text-center alert-secondary">
-                                <div class=" col-12" style=" height: 200px;">
-                                    <div class="col-12">Comentários</div>
-                                    @foreach (var itemCom in item.comentarios)
-                                    {
-                                        <div class="card border-dark alert-secondary">
-                                            <div class="col-12 font-weight-bolder">
-                                                @Html.DisplayFor(modelItem => itemCom.Usuario.Nome)
-                                                <div class="float-right">
-                                                    @Html.DisplayFor(modelItem => itemCom.Data)
-                                                </div>
+                        </div>
+                        <div class="col-lg-8 col-md-8 col-sm-12 text-center ">
+                            <div class="col-12">Comentários</div>
+                            <div class=" col-12 p-0" name="chat" id="chat_@item.Pos_id" style=" height: 190px; overflow-y: scroll">
+                                @foreach (var itemCom in item.comentarios)
+                                {
+                                    <div class="card  alert-secondary my-2 col-xl-10 col-md-12 col-sm-12">
+                                        <div class="col-12 p-0 font-weight-bolder">
+                                            <div class="float-left h6">
+                                                @itemCom.Usuario.Nome
                                             </div>
-                                            <div class="col-12 px-4">
-                                                @Html.DisplayFor(modelItem => itemCom.Comentario)
+                                            <div class="float-right h6">
+                                                @itemCom.Data.ToString("HH:mm dd/MM/yy")
                                             </div>
-
-
                                         </div>
-                                    }
-                                </div>
+                                        <hr class="m-0" />
+                                        <div class="col-12 px-4 text-left">
+                                            @Html.DisplayFor(modelItem => itemCom.Comentario)
+                                        </div>
+                                    </div>
+                                    <div class=" col-xl-10 col-md-12 col-sm-12">
+                                        <hr class="m-1" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="row px-3">
+                                <input type="text" class="form-control col-11" id="comentario_@item.Pos_id" />
+                                <button id=" @item.Pos_id" class=" col-1 btn btn-sm btn-block btn-dark" onclick="enviarComentario(this.id)" style="border-radius: 0px 5px 5px 0px; z-index: 0;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
+                                        <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                                    </svg>
+                                </button>
+                                <span id="AA"></span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>       
-    }
+        </div>
+    </div>
+}
 
 
 <script src="~/Scripts/medium-zoom.min.js"></script>
@@ -109,6 +122,55 @@
                 $(a).hide()
             }
         }
+    }
+
+    desceChats();
+
+    function desceChats() {
+        document.getElementsByName('chat').forEach(function (ele, idx) {
+            ele.scrollTop = ele.scrollHeight
+        })
+    }
+
+    function enviarComentario(post) {
+        var comentario = document.getElementById('comentario_' + post ).value
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Post/Comentar",
+                data: { comentario, post},
+                success: function (retorno) {
+                    if (retorno == "ok") {
+
+
+                        document.getElementById('chat_' + post).innerHTML +=
+                            '<div class="card  alert-secondary my-2 col-xl-10 col-md-12 col-sm-12">' +
+                                       ' <div class="col-12 p-0 font-weight-bolder">' +
+                                            '<div class="float-left h6">' +
+                                              @{
+                                                  <text>'@User.Identity.Name.Split('|')[2]'</text>
+                                                  }  +
+                                            '</div>' +
+                            '<div class="float-right h6">' +
+                                               @{
+                                                  <text>'@DateTime.Now.ToString("HH:mm dd/MM/yy")'</text>
+                                                  } +
+                                            '</div>' +
+                                          '</div>' +
+                                        '<hr class="m-0" />' +
+                                        '<div class="col-12 px-4 text-left">' +
+                                         comentario +
+                                       '</div>' +
+                                   '</div>' +
+                                    '<div class=" col-xl-10 col-md-12 col-sm-12">' +
+                                       '<hr class="m-1" />' +
+                            '</div>';
+                        $('#comentario_' + post).val('');
+                                                  desceChats();
+
+                    }}
+            });
+
     }
 
 

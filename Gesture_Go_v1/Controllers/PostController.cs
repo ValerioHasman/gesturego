@@ -109,6 +109,22 @@ namespace Gesture_Go_v1.Controllers
             return Json("");
         }
 
+        [AcceptVerbs(HttpVerbs.Post)]
+        [ValidateInput(false)]
+        public JsonResult Comentar(string comentario, int post)
+        {
+
+            Comentarios com = new Comentarios();
+            com.PostsPos_id = post;
+            com.UsuarioId = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
+            com.Data = DateTime.Now;
+            com.Comentario = comentario;
+            db.Comentarios.Add(com);
+            db.SaveChanges();
+
+            return Json("ok");
+        }
+
         public ActionResult Sair()
         {
             FormsAuthentication.SignOut();
