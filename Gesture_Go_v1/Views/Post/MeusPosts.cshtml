@@ -10,9 +10,9 @@
     <div class="row">
 
         <div class="col-lg-2 col-md-2 col-sm-12 px-2 mb-2 mb-xl-0 mb-md-0 ">
-                <button id="meusPosts" class="btn btn-block btn-dark text-truncate">
-                    @Html.ActionLink("Todos Posts", "Posts", "Post", new { area = "" }, new { @class = "text-white" })
-                </button>
+            <button id="meusPosts" class="btn btn-block btn-dark text-truncate">
+                @Html.ActionLink("Todos Posts", "Posts", "Post", new { area = "" }, new { @class = "text-white" })
+            </button>
         </div>
 
         <div class="col-lg-10 col-md-10 col-sm-12">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-lg-8 col-md-8 col-sm-12 text-center ">
                             <div class="col-12">Comentários</div>
-                            <div class=" col-12 p-0" name="chat" style=" height: 190px; overflow-y: scroll">
+                            <div class=" col-12 p-0" name="chat" id="chat_@item.Pos_id" style=" height: 190px; overflow-y: scroll">
                                 @foreach (var itemCom in item.comentarios)
                                 {
                                     <div class="card  alert-secondary my-2 col-xl-10 col-md-12 col-sm-12">
@@ -76,12 +76,13 @@
                                 }
                             </div>
                             <div class="row px-3">
-                                <input type="text" class="form-control col-11" id="comentar" />
-                                <button id="btnPesquisa" class=" col-1 btn btn-sm btn-block btn-dark" onclick="LimparPesquisa()" style="border-radius: 0px 5px 5px 0px; z-index: 0;">
+                                <input type="text" class="form-control col-11" id="comentario_@item.Pos_id" />
+                                <button id=" @item.Pos_id" class=" col-1 btn btn-sm btn-block btn-dark" onclick="enviarComentario(this.id)" style="border-radius: 0px 5px 5px 0px; z-index: 0;">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send" viewBox="0 0 16 16">
                                         <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
                                     </svg>
                                 </button>
+                                <span id="AA"></span>
                             </div>
                         </div>
                     </div>
@@ -129,6 +130,47 @@
         document.getElementsByName('chat').forEach(function (ele, idx) {
             ele.scrollTop = ele.scrollHeight
         })
+    }
+
+    function enviarComentario(post) {
+        var comentario = document.getElementById('comentario_' + post ).value
+            $.ajax({
+                dataType: "json",
+                type: "POST",
+                url: "/Post/Comentar",
+                data: { comentario, post},
+                success: function (retorno) {
+                    if (retorno == "ok") {
+
+
+                        document.getElementById('chat_' + post).innerHTML +=
+                            '<div class="card  alert-secondary my-2 col-xl-10 col-md-12 col-sm-12">' +
+                                       ' <div class="col-12 p-0 font-weight-bolder">' +
+                                            '<div class="float-left h6">' +
+                                              @{
+                                                  <text>'@User.Identity.Name.Split('|')[2]'</text>
+                                                  }  +
+                                            '</div>' +
+                            '<div class="float-right h6">' +
+                                               @{
+                                                  <text>'@DateTime.Now.ToString("HH:mm dd/MM/yy")'</text>
+                                                  } +
+                                            '</div>' +
+                                          '</div>' +
+                                        '<hr class="m-0" />' +
+                                        '<div class="col-12 px-4 text-left">' +
+                                         comentario +
+                                       '</div>' +
+                                   '</div>' +
+                                    '<div class=" col-xl-10 col-md-12 col-sm-12">' +
+                                       '<hr class="m-1" />' +
+                            '</div>';
+                        $('#comentario_' + post).val('');
+                                                  desceChats();
+
+                    }}
+            });
+
     }
 
 

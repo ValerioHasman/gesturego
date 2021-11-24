@@ -24,8 +24,24 @@ namespace Gesture_Go_v1.Controllers
         }
 
         [Authorize]
+        public ActionResult ProgressoPgInicial()
+        {
+            ViewBag.aa = "Funfanfo";
+            return View();
+        }
+
+        [Authorize]
         public ActionResult PaginaInicialIndex()
         {
+            var hoje = DateTime.Now.Day;
+            var aa = db.HistoricoPratica.Where(x => x.data.Day == hoje).Select(x => x.qtdImagens).ToList();
+            int a = 0;
+
+            foreach (var item in aa)
+            {
+                a += item;
+            }
+            ViewBag.a = a;
             return View();
         }
 
@@ -66,6 +82,7 @@ namespace Gesture_Go_v1.Controllers
         {
             return RedirectToAction("Pratica", ses);
         }
+
 
 
         public ActionResult Sair()

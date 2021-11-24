@@ -44,7 +44,7 @@
                         @Html.ActionLink("Posts", "Posts", "Post", new { area = "" }, new { @class = "nav-link" })
                     </li>
                     @{
-                        string a = Convert.ToString(User.Identity.Name.Split('|')[2]);
+                        string a = Convert.ToString(User.Identity.Name.Split('|')[3]);
 
                         if (a == "1")
                         {
