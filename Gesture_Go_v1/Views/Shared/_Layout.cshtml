@@ -23,7 +23,6 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             @Html.ActionLink("Gesture Go", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-
         </div>
 
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
@@ -34,31 +33,29 @@
                 <li class="nav-item">
                     @Html.ActionLink(" Posts", "Posts", "Post", new { area = "" }, new { @class = "nav-link bi bi-file-post-fill" })
                 </li>
-               
-
-
             </ul>
         </div>
 
 
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
-                Dropdown button
+            <img  class="rounded" style="width: 30px;" src="~/ImgUsuarios/@{if (User.Identity.Name.Split('|')[4] != "") {@User.Identity.Name.Split('|')[4]} else {<text>user.png</text>} }?@DateTime.Now.ToString("yyyyMMddHHmmss")"/>
+            <button class="btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
+                @{ <span class=" text-white h6 font-weight-light">@User.Identity.Name.Split('|')[1]</span>}
             </button>
-            <div class="dropdown-menu bg-secondary aria-labelledby="dropdownMenuButton">
-                @Html.ActionLink("Perfil", "Perfil", "PaginaInicial", new { area = "" }, new { @class = "nav-link text-white " })
+            <div class="dropdown-menu dropdown-menu-right bg-secondary" style="width: 200px;" aria-labelledby="dropdownMenuButton">
+                @Html.ActionLink(" Edit. Perfil", "Perfil", "PaginaInicial", new { area = "" }, new { @class = "bi bi-pencil-square nav-link text-white " })
                 @{
                     string a = Convert.ToString(User.Identity.Name.Split('|')[3]);
 
                     if (a == "1")
                     {
                         <li class="nav-item">
-                            @Html.ActionLink(" Adiconar imagens", "AddImagens", "AdmImagens", new { area = "" }, new { @class = "text-white nav-link bi bi-file-earmark-plus" })
+                            @Html.ActionLink(" Adic. imagens", "AddImagens", "AdmImagens", new { area = "" }, new { @class = "text-white nav-link bi bi-file-earmark-plus" })
                         </li>
                     }
                 }
                 <button class="btn btn-outline-secondary">
-                    @Html.ActionLink("Sair", "Sair", "Home", new { @class = "text-white bi bi-arrow-bar-left" })
+                    @Html.ActionLink(" Sair", "Sair", "Home", new { @class = "text-white bi bi-arrow-bar-left" })
                 </button>
             </div>
         </div>
@@ -78,35 +75,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-    <script>tinymce.init({ selector: 'textarea' });</script>
-
-    @if (TempData["MSG"] != null)
-    {
-
-<script>
-    $(document).ready(function () {
-        var titulo = "";
-        switch ("@TempData["MSG"].ToString().Split('|')[0]") {
-            case "success":
-                titulo = "Sucesso";
-            break;
-
-            case "warning":
-                titulo = "Atenção";
-            break;
-
-            case "error":
-                titulo = "Erro";
-                break;
-
-            case "info":
-                titulo = "Informação";
-            break;
-    }
-swal(titulo, "@Html.Raw(TempData["MSG"].ToString().Split('|')[1])",
-"@TempData["MSG"].ToString().Split('|')[0]");
-});
-</script>
-    }
+   
 </body>
 </html>
