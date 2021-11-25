@@ -10,36 +10,32 @@ namespace Gesture_Go_v1.Migrations
             CreateTable(
                 "dbo.com_comentarios",
                 c => new
-                    {
-                        com_id = c.Int(nullable: false, identity: true),
-                        pos_id = c.Int(nullable: false),
-                        usu_id = c.Int(nullable: false),
-                        com_comentario = c.String(unicode: false),
-                        com_data = c.DateTime(nullable: false, precision: 0),
-                    })
+                {
+                    com_id = c.Int(nullable: false, identity: true),
+                    pos_id = c.Int(nullable: false),
+                    usu_id = c.Int(nullable: false),
+                    com_comentario = c.String(unicode: false),
+                    com_data = c.DateTime(nullable: false, precision: 0),
+                })
                 .PrimaryKey(t => t.com_id)
                 .ForeignKey("dbo.pos_posts", t => t.pos_id, cascadeDelete: true)
-                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
-                .Index(t => t.pos_id)
-                .Index(t => t.usu_id);
-            
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
+
             CreateTable(
                 "dbo.pos_posts",
                 c => new
-                    {
-                        pos_id = c.Int(nullable: false, identity: true),
-                        pos_titulo = c.String(maxLength: 200, storeType: "nvarchar"),
-                        pos_status = c.Boolean(nullable: false),
-                        pos_imgUpload = c.String(unicode: false),
-                        data = c.DateTime(nullable: false, precision: 0),
-                        usu_id = c.Int(nullable: false),
-                        img_id = c.Int(nullable: false),
-                    })
+                {
+                    pos_id = c.Int(nullable: false, identity: true),
+                    pos_titulo = c.String(maxLength: 200, storeType: "nvarchar"),
+                    pos_status = c.Boolean(nullable: false),
+                    pos_imgUpload = c.String(unicode: false),
+                    data = c.DateTime(nullable: false, precision: 0),
+                    usu_id = c.Int(nullable: false),
+                    img_id = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.pos_id)
                 .ForeignKey("dbo.img_Imagens", t => t.img_id, cascadeDelete: true)
-                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
-                .Index(t => t.usu_id)
-                .Index(t => t.img_id);
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
             
             CreateTable(
                 "dbo.img_Imagens",
@@ -50,22 +46,21 @@ namespace Gesture_Go_v1.Migrations
                         img_nome = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.img_id);
-            
+
             CreateTable(
                 "dbo.usu_usuario",
                 c => new
-                    {
-                        usu_id = c.Int(nullable: false, identity: true),
-                        usu_nome = c.String(nullable: false, maxLength: 200, storeType: "nvarchar"),
-                        usu_email = c.String(nullable: false, unicode: false),
-                        usu_senha = c.String(nullable: false, unicode: false),
-                        usu_ImgPerfil = c.String(unicode: false),
-                        PerfilId = c.Int(nullable: false),
-                        Hash = c.String(unicode: false),
-                    })
+                {
+                    usu_id = c.Int(nullable: false, identity: true),
+                    usu_nome = c.String(nullable: false, maxLength: 200, storeType: "nvarchar"),
+                    usu_email = c.String(nullable: false, unicode: false),
+                    usu_senha = c.String(nullable: false, unicode: false),
+                    usu_ImgPerfil = c.String(unicode: false),
+                    PerfilId = c.Int(nullable: false),
+                    Hash = c.String(unicode: false),
+                })
                 .PrimaryKey(t => t.usu_id)
-                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true)
-                .Index(t => t.PerfilId);
+                .ForeignKey("dbo.per_perfil", t => t.PerfilId, cascadeDelete: true);
             
             CreateTable(
                 "dbo.per_perfil",
@@ -75,20 +70,19 @@ namespace Gesture_Go_v1.Migrations
                         per_descricao = c.String(unicode: false),
                     })
                 .PrimaryKey(t => t.per_id);
-            
+
             CreateTable(
                 "dbo.his_historicoPratica",
                 c => new
-                    {
-                        his_id = c.Int(nullable: false, identity: true),
-                        usu_id = c.Int(nullable: false),
-                        his_data = c.DateTime(nullable: false, precision: 0),
-                        his_tempoPratica = c.DateTime(nullable: false, precision: 0),
-                        his_qtdImagens = c.Int(nullable: false),
-                    })
+                {
+                    his_id = c.Int(nullable: false, identity: true),
+                    usu_id = c.Int(nullable: false),
+                    his_data = c.DateTime(nullable: false, precision: 0),
+                    his_tempoPratica = c.DateTime(nullable: false, precision: 0),
+                    his_qtdImagens = c.Int(nullable: false),
+                })
                 .PrimaryKey(t => t.his_id)
-                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true)
-                .Index(t => t.usu_id);
+                .ForeignKey("dbo.usu_usuario", t => t.usu_id, cascadeDelete: true);
             
         }
         
