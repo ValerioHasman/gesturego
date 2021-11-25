@@ -7,10 +7,39 @@
 @{
     ViewBag.Title = "PaginaInicialIndex";
 }
+<style type="text/css">
+    .ldBar path.mainline {
+        stroke-width: 8;
+        stroke: #09f;
+        stroke-linecap: round;
+    }
+
+    .ldBar path.baseline {
+        stroke-width: 10;
+        stroke: lightgray;
+        stroke-linecap: round;
+        filter: drop-shadow();
+    }
+</style>
 
 <div class="col-12 mb-3">
-    <div class="p-3 m-1 ml-2 card bg-light shadow" style="border-radius: 8px 8px 8px 8px;">
-        @ViewBag.a
+    <div class="p-3 m-1 card bg-light shadow " style="border-radius: 8px 8px 8px 8px;">
+        <div class="row ">
+            <div class="col-12 h5 text-center">Desempenho</div>
+            <div class=" col-xl-6 col-md-6 col-sm-12 row">
+                <div class="col-4">
+                    <div data-preset="fan" class=" ldBar label-center h6" data-value="@ViewBag.a"></div>
+                </div>
+                <div class="col-8 pt-3 h6">Prática diaria: @ViewBag.hora/1 hora</div>
+            </div>
+
+            <div class="col-xl-6 col-md-6 col-sm-12  row">
+                <div class="col-8  pt-3 h6 text-right">Prática Semanal: @ViewBag.semana/7 horas </div>
+                <div class="col-4">
+                    <div data-preset="fan" class=" ldBar label-center h6" data-value="@ViewBag.b"></div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -55,7 +84,7 @@
                 </div>
             </div>
 
-            <div class="col-12 p-1 my-3">
+            <div class="col-12 p-1 my-2">
                 <div class="row">
                     <div class="col-6 ">
                         @Html.LabelFor(model => model.ses_timer, htmlAttributes: new { @class = "control-label col-12 h6" })
@@ -74,27 +103,21 @@
                     </div>
 
                     <div class="col-6">
-                        @Html.LabelFor(model => model.ses_qtdImages, htmlAttributes: new { @class = "control-label col-12 h6" })
+                        @Html.LabelFor(model => model.ses_qtdImages, htmlAttributes: new { @class = "control-label col-12 h6 " })
                         <div class="p-2">
-                            @Html.EditorFor(model => model.ses_qtdImages, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.ses_qtdImages, "", new { @class = "text-danger" })
+                            <div class="col-12">
+                                <input type="submit" value="Iniciar Prática" class="text-center btn btn-block btn-primary" />
+                            </div>
                         </div>
                     </div>
 
                 </div>
             </div>
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <div class="col-12">
-                    <input type="submit" value="Iniciar Prática" class="btn btn-block btn-primary" />
-                </div>
-            </div>
 
-            <div class="form-group">
-
-
-            </div>
         }
 
     </div>
 </div>
+
+<link rel="stylesheet" type="text/css" href="~/Content/dist/loading-bar.css" />
+<script type="text/javascript" src="~/Content/dist/loading-bar.js"></script>

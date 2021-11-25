@@ -33,15 +33,34 @@ namespace Gesture_Go_v1.Controllers
         [Authorize]
         public ActionResult PaginaInicialIndex()
         {
-            var hoje = DateTime.Now.Day;
-            var aa = db.HistoricoPratica.Where(x => x.data.Day == hoje).Select(x => x.qtdImagens).ToList();
-            int a = 0;
+            int id = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
 
-            foreach (var item in aa)
+     
+            var diaAtual = DateTime.Now;
+            var hojeSemana = DateTime.Now.AddDays(((double)DateTime.Now.DayOfWeek) * -1);
+            var listaTeste = db.HistoricoPratica.Where(x => x.data.Day == diaAtual.Day && x.data.Month == diaAtual.Month && x.data.Year == diaAtual.Year && x.UsuarioId == id).ToList().Select(g => new { g.tempoPratica, g.qtdImagens }).ToList();
+            //var Lista = db.HistoricoPratica.Where(x => x.data.Date == diaAtual.Date && x.UsuarioId == id).ToList().Select(g => new { g.tempoPratica, g.qtdImagens }).ToList();
+            var ListaSemana = db.HistoricoPratica.Where(x => x.data.Day >= hojeSemana.Day && x.data.Month >= hojeSemana.Month && x.data.Year >= hojeSemana.Year && x.UsuarioId == id).Select(g => new { g.tempoPratica, g.qtdImagens }).ToList();
+            int a = 0;
+            int b = 0;
+
+            foreach (var item in listaTeste)
             {
-                a += item;
+                a += Funcoes.ConverteSegudos(item.tempoPratica) * item.qtdImagens;
             }
-            ViewBag.a = a;
+
+            foreach (var item in ListaSemana)
+            {
+                b += Funcoes.ConverteSegudos(item.tempoPratica) * item.qtdImagens;
+            }
+
+            TimeSpan time = TimeSpan.FromSeconds(a);
+            TimeSpan timeS = TimeSpan.FromSeconds(b);
+            ViewBag.a = Convert.ToInt32(((double)a / 3600) * 100);
+            ViewBag.b = Convert.ToInt32(((double)b / (3600 * 7)) * 100); ;
+
+           ViewBag.hora = time.ToString(@"h\:mm\:ss");
+           ViewBag.semana = timeS.ToString(@"h\:mm\:ss");
             return View();
         }
 
