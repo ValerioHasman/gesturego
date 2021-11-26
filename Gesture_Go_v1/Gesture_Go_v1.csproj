@@ -176,6 +176,7 @@
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagens\04-09_gato_SITE.png" />
+    <Content Include="ImgUsuarios\Chucky serie.jpg" />
     <Content Include="ImgUsuarios\user.png" />
     <Content Include="img\00-featured-gesture-drawing-sketches.jpg" />
     <Content Include="Imagens\download.jpg" />

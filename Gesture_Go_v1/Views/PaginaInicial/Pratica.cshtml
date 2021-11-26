@@ -25,8 +25,13 @@
     int count = 0;
 }
 
-<div class="col-12 mb-1 bg-dark p-1 pl-2">
-    <div class="btn btn-outline-secondary p-1 text-white" id="finalizar"><i>@Html.ActionLink(" Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left text-white" })</i></div>
+<div class="col-12 mb-1 bg-dark p-1 px-3 ">
+    <div class="col-12 row">
+        <div  id="finalizar">@Html.ActionLink(" Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left  btn  btn-outline-secondary p-1 text-white" })</div>
+        @*<div class="offset-7 row"> 
+            <span class="text-white h6 font-weight-lighter  ml-5 text-justify">Avanço Automático <input class="" id="avanco" type="checkbox" /></span>
+        </div>*@
+    </div>
 </div>
 
 
@@ -178,7 +183,11 @@
             PegaId();
             if (TempoRes == 0)
             {
+                //if (document.getElementById('avanco'). == true) {
+                   
+                //}
                 $('#carouselExampleControls').carousel('next');
+                
                 qtdPratica++;
             }
                 if (TempoRes >= 0) {
