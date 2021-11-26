@@ -7,19 +7,19 @@
 
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("EsqueceuSenha", "Home", FormMethod.Post)) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal p-3 mt-3 col-12 card bg-light shadow" style="border-radius: 5px 5px 5px 5px;">
+    <div class="form-horizontal">
         <h4>Recuperar Senha</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-12" })
+            @Html.LabelFor(model => model.EmailRec, htmlAttributes: new { @class = "control-label col-12" })
             <div class="col-md-12 ">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control col-12" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.EmailRec, new { htmlAttributes = new { @class = "form-control col-12" } })
+                @Html.ValidationMessageFor(model => model.EmailRec, "", new { @class = "text-danger" })
             </div>
         </div>
 

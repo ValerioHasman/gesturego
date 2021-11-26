@@ -32,10 +32,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                @Html.ActionLink("Esqueci minha senha", "EsqueceuSenha", "Home", new { area = "" }, new { @class = "text-danger" })
+                @*@Html.ActionLink("Esqueci minha senha", "EsqueceuSenha", "Home", new { area = "" }, new { @class = "text-danger" })*@
             </div>
+            <a class="col-12 text-danger m-3" data-toggle="modal" data-target="#modalEsc">Esqueci minha senha</a>
             <br />
-            <div class="col-md-offset-2 col-md-12">
+            <div class="col-md-offset-2 col-md-12 mt-2">
                 <input type="submit" value="Logar" class="btn btn-primary form-control" />
             </div>
 

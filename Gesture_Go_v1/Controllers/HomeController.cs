@@ -158,7 +158,7 @@ namespace Gesture_Go_v1.Controllers
             if (ModelState.IsValid)
             {
                 Contexto db = new Contexto();
-                var usu = db.Usuario.Where(x => x.Email == esq.Email).ToList().FirstOrDefault();
+                var usu = db.Usuario.Where(x => x.Email == esq.EmailRec).ToList().FirstOrDefault();
                 if (usu != null)
                 {
                     usu.Hash = Funcoes.Codifica(DateTime.Now.AddDays(1).ToString("yyyy-MM-dd HH:mm:ss.ffff"));

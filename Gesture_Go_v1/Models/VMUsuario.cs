@@ -59,7 +59,8 @@ namespace Gesture_Go_v1.Models
     {
         [EmailAddress]
         [Required]
-        public string Email { get; set; }
+        [Display(Name = "Email:")]
+        public string EmailRec { get; set; }
     }
 
     public class RedefinirSenha
