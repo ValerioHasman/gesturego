@@ -85,8 +85,8 @@ namespace Gesture_Go_v1.Controllers
 
                         db.Posts.Add(posts);
                         db.SaveChanges();
-                        TempData["Postado"] = "post criado com sucesso";
-                         return Json("ok");
+                        ViewBag.toast = "post criado com sucesso";
+                        return Json("ok");
 
                     } else { return Json("imgGrande"); }
 

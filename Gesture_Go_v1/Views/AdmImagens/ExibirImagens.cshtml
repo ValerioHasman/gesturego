@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Gesture_Go_v1.Models.Imagem>
+
+@{
+    ViewBag.Title = "";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.Partial("~/Views/AdmImagens/AddImagens.cshtml", new Gesture_Go_v1.Models.Imagem())
+
+<div class=" col-12 mb-3 p-2 card bg-light shadow accordion" id="accordionExample" style="border-radius: 5px 5px 5px 5px; z-index: 0;">
+    <div class="col-12 h4 text-center">Imagens de referência<hr /></div>
+
+    <div class="col-12 row m-auto ">
+
+        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
+            Collapsible Group Item #1
+        </div>
+        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
+            Collapsible Group Item #2
+        </div>
+        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree">
+            Collapsible Group Item #3
+        </div>
+    </div>
+
+    <div class="row my-3">
+
+
+        <div class="col-12 row my-3 collapse show" id="collapseOne" data-parent="#accordionExample">
+            @foreach (var item in Model)
+            {
+
+                if (item.Img_tipo == "Animal")
+                {
+                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                        @Html.HiddenFor(modelItem => item.Id)
+
+                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                        <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-12 row my-3 collapse" id="collapseTwo" data-parent="#accordionExample">
+            @foreach (var item in Model)
+            {
+
+                if (item.Img_tipo == "Estruturas")
+                {
+                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                        @Html.HiddenFor(modelItem => item.Id)
+
+                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                        <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
+                    </div>
+                }
+            }
+        </div>
+        <div class="col-12 row my-3 collapse" id="collapseThree" data-parent="#accordionExample">
+            @foreach (var item in Model)
+            {
+
+                if (item.Img_tipo == "Humano")
+                {
+                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                        @Html.HiddenFor(modelItem => item.Id)
+
+                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                        <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
+                    </div>
+                }
+            }
+        </div>
+    </div>
+    <hr />
+</div>
+
+<script></script>

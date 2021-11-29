@@ -324,7 +324,7 @@
     <Content Include="Views\Post\MeusPosts.cshtml" />
     <Content Include="Views\PaginaInicial\Perfil.cshtml" />
     <Content Include="Views\PaginaInicial\Progresso.cshtml" />
-    <Content Include="Views\PaginaInicial\ProgressoPgInicial.cshtml" />
+    <Content Include="Views\AdmImagens\ExibirImagens.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

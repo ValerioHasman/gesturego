@@ -27,9 +27,9 @@
         <div class="row ">
             <div class="col-12 h5 text-center">Desempenho</div>
 
-            <div class=" col-xl-6 col-md-6 col-sm-12 row mr-">
+            <div class=" col-xl-6 col-md-6 col-sm-12 row ">
                 <div class="col-4 ">
-                    <div data-preset="fan" class=" ldBar label-center h6" data-value="@ViewBag.a"></div>
+                    <div data-preset="fan" class=" ldBar label-center h6 m-auto" data-value="@ViewBag.a"></div>
                 </div>
                 <div class="col-8 pt-3 h6">Prática diaria: @{ if (ViewBag.horaCompleto != null)
                     {<span class=" h6 text-success">@ViewBag.horaCompleto</span>}
@@ -37,15 +37,15 @@
                 </div>
             </div>
 
-            <div class="col-xl-6 col-md-6 col-sm-12 row  ml-4">
+            <div class="col-xl-6 col-md-6 col-sm-12 row  ml-xl-4">
                 <div class="col-8 pt-3 h6 text-right">
                     Prática Semanal: @{ if (ViewBag.semanaCompleto != null)
                         {<span class=" h6 text-success">@ViewBag.horaCompleto</span>}
                     else
                     {<span class="h6">@ViewBag.semana/7 Horas</span> } }
                 </div>
-                <div class="col-4">
-                    <div data-preset="fan" class=" ldBar label-center h6" data-value="@ViewBag.b"></div>
+                <div class="col-4 ">
+                    <div data-preset="fan" class=" ldBar label-center h6 m-auto" data-value="@ViewBag.b"></div>
                 </div>
             </div>
         </div>
