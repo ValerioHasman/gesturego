@@ -10,32 +10,31 @@
 <div class=" col-12 mb-3 p-2 card bg-light shadow accordion" id="accordionExample" style="border-radius: 5px 5px 5px 5px; z-index: 0;">
     <div class="col-12 h4 text-center">Imagens de referência<hr /></div>
 
-    <div class="col-12 row m-auto ">
-
-        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne">
-            Collapsible Group Item #1
-        </div>
-        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo">
-            Collapsible Group Item #2
-        </div>
-        <div class="btn btn-outline-dark btn-block  col-4" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree">
-            Collapsible Group Item #3
+    <div class="col-12">
+        <div class="row">
+            <div class="btn btn-dark  text-center col-4" data-toggle="collapse" data-target="#collapseOne" aria-controls="collapseOne" style="border-radius: 5px 0px 0px 5px;">
+                Animais
+            </div>
+            <div class="btn btn-dark  col-4" data-toggle="collapse" data-target="#collapseTwo" aria-controls="collapseTwo" style="border-radius: 0;">
+                Estruturas
+            </div>
+            <div class="btn btn-dark  col-4" data-toggle="collapse" data-target="#collapseThree" aria-controls="collapseThree" style="border-radius: 0px 5px 5px 0px;">
+                Figura Humana
+            </div>
         </div>
     </div>
 
     <div class="row my-3">
-
-
         <div class="col-12 row my-3 collapse show" id="collapseOne" data-parent="#accordionExample">
             @foreach (var item in Model)
             {
 
                 if (item.Img_tipo == "Animal")
                 {
-                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                    <div id="imagem_@item.Id" class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
                         @Html.HiddenFor(modelItem => item.Id)
 
-                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                        <div id="@item.Id" onclick="apagar(this.id)" data-toggle="modal" data-target="#exampleModal" class="deleteItem btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
                         <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
                     </div>
                 }
@@ -47,10 +46,8 @@
 
                 if (item.Img_tipo == "Estruturas")
                 {
-                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
-                        @Html.HiddenFor(modelItem => item.Id)
-
-                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                    <div id="imagem_@item.Id" class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                        <div id="@item.Id" onclick="apagar(this.id)" data-toggle="modal" data-target="#exampleModal" class="deleteItem btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
                         <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
                     </div>
                 }
@@ -62,10 +59,8 @@
 
                 if (item.Img_tipo == "Humano")
                 {
-                    <div class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
-                        @Html.HiddenFor(modelItem => item.Id)
-
-                        <div class="btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
+                    <div id="imagem_@item.Id" class="col-xl-2 col-md-3 col-sm-4 col-6 mb-2 text-center">
+                        <div id="@item.Id" onclick="apagar(this.id)" data-toggle="modal" data-target="#exampleModal" class="deleteItem btn btn-sm btn-block btn-outline-danger w-75 m-auto bi bi-trash" style="border-radius: 5px 5px 0px 0px;"></div>
                         <img class="w-75 shadow" src="~/imagens/@item.Img_nome?@DateTime.Now.ToString("yyyyMMddHHmmss")" />
                     </div>
                 }
@@ -75,4 +70,65 @@
     <hr />
 </div>
 
-<script></script>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <span class="h6"> Deseja Apagar Essa imagem de Referência ?</span>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" onclick="apagarConfirma()" class="btnId btn btn-danger">Apagar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+
+    
+
+
+
+    function apagar(id) {
+        $("#a").text(id);
+        $(".btnId").val(id);
+    }
+
+    function apagarConfirma() {
+
+        var id = $('.btnId').val();
+
+        $.ajax({
+            dataType: "json",
+            type: "POST",
+            url: "/AdmImagens/Delete",
+            data: { id },
+            success: function (retorno) {
+                if (retorno == "ok") {
+
+                    $('#imagem_' + id).remove();
+                    $('#exampleModal').modal('toggle');
+                    $('.texto').text('Imagem Apagada');
+                    $('#msg').toast('show');
+
+
+                } else {
+                    $('#exampleModal').modal('toggle');
+                }
+            }
+        });
+
+    }
+
+</script>
