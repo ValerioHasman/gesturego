@@ -128,17 +128,14 @@
 
 
 
-    <div class="toast" id="msg" style="position: absolute; top: 10px; right: 10px;" data-delay="4000">
+    <div class="toast" id="msg" style="position: fixed; top: 10px; right: 10px;" data-delay="4000">
         <div class="toast-header">
-            <img src="..." class="rounded mr-2" alt="...">
-            <strong class="mr-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
+            <strong class="mr-auto bi bi-chat-dots"> Mensagem</strong>
             <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <div class="toast-body ">
-
+        <div class="toast-body h6" id="Msg">
         </div>
     </div>
 
@@ -297,29 +294,33 @@
 
                         $('.modal').modal('toggle');
                         $('#msg').toast('show');
-                        /* $('#msgerro').text("Post criado");*/
-
-                        //$("#msgerro").removeClass("text-danger");
-                        //$("#msgerro").addClass("text-success");
-                        //$("#msgerro").text("Post criado");
-                      
-
+                        $('#Msg').text("Post criado !!");
+                        $("#Msg").removeClass("text-danger");
+                        $("#Msg").addClass("text-success");
                     }
                     else if (retorno == "semImg") {
-                        $("#msgerro").addClass("text-danger");
-                        $("#msgerro").text("Anexe a imagem da prática");
+                        $('#msg').toast('show');
+                        $('#Msg').text("Sem sketch anexado !");
+                        $("#Msg").addClass("text-danger");
+                        $("#Msg").removeClass("text-success");
                     }
                     else if (retorno == "imgGrande") {
-                        $("#msgerro").addClass("text-danger");
-                        $("#msgerro").text("Tamanho de imagem muito grande");
+                        $('#msg').toast('show');
+                        $('#Msg').text("Tamanho de imagem muito grande !");
+                        $("#Msg").addClass("text-danger");
+                        $("#Msg").removeClass("text-success");
                     }
                     else if (retorno == "n") {
-                        $("#msgerro").addClass("text-danger");
-                        $("#msgerro").text("Preencha os campos corretamente");
+                        $('#msg').toast('show');
+                        $('#Msg').text("Preencha os campos corretamente !");
+                        $("#Msg").addClass("text-danger");
+                        $("#Msg").removeClass("text-success");
                     }
                     else if (retorno == "tpequeno") {
-                        $("#msgerro").addClass("text-danger");
-                        $("#msgerro").text("Pergunra muito pequena");
+                        $('#msg').toast('show');
+                        $('#Msg').text("Pergunta muito pequena ou sem preenchimento !");
+                        $("#Msg").addClass("text-danger");
+                        $("#Msg").removeClass("text-success");  
                     }
                 }
             });

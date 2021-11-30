@@ -318,8 +318,6 @@
     <Content Include="Views\Home\Email.cshtml" />
     <Content Include="Views\Home\EsqueceuSenha.cshtml" />
     <Content Include="Views\Home\Redefinir.cshtml" />
-    <Content Include="Views\Post\CriarComentario.cshtml" />
-    <Content Include="Views\Post\Comentarios.cshtml" />
     <Content Include="Views\AdmImagens\AddImagens.cshtml" />
     <Content Include="Views\Post\MeusPosts.cshtml" />
     <Content Include="Views\PaginaInicial\Perfil.cshtml" />
