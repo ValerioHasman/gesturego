@@ -43,7 +43,7 @@
                 @{ <span class=" text-white h6 font-weight-light">@User.Identity.Name.Split('|')[1]</span>}
             </button>
             <div class="dropdown-menu bg-secondary" style="width: 200px;" aria-labelledby="dropdownMenuButton">
-                @Html.ActionLink(" Edit. Perfil", "Perfil", "PaginaInicial", new { area = "" }, new { @class = "bi bi-file-person nav-link text-white " })
+                @Html.ActionLink(" Edit. Perfil", "EditarPerfil", "PaginaInicial", new { area = "" }, new { @class = "bi bi-file-person nav-link text-white " })
                 @{
                     string a = Convert.ToString(User.Identity.Name.Split('|')[3]);
 
