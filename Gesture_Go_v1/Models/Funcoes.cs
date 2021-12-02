@@ -159,9 +159,9 @@ namespace Gesture_Go_v1.Models
                 SmtpClient cliente = new SmtpClient();
                 //Envia o email
                 cliente.Send(mensagem);
-                return "success|E-mail enviado com sucesso";
+                return "E-mail enviado com sucesso";
             }
-            catch { return "error|Erro ao enviar e-mail"; }
+            catch { return "Erro ao enviar e-mail"; }
         }
         public static string Codifica(string texto)
         {

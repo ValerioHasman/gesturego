@@ -98,6 +98,7 @@ namespace Gesture_Go_v1.Controllers
                 try
                 {
                     db.SaveChanges();
+                    TempData["Msg"] = "Conta Cadastrada";
                 }
                 catch (System.Data.Entity.Validation.DbEntityValidationException dbEx)
                 {
@@ -137,12 +138,14 @@ namespace Gesture_Go_v1.Controllers
         {
             if (ModelState.IsValid)
             {
-                TempData["MSG"] = Funcoes.EnviarEmail(msg.Email,
+                TempData["Msg"] = Funcoes.EnviarEmail(msg.Email,
                 msg.Assunto, msg.CorpoMsg);
+                TempData["Msg"] = msg;
+
             }
             else
             {
-                TempData["MSG"] = "warning|Preencha todos os campos";
+                TempData["Msg"] = "Preencha todos os campos";
             }
             return View(msg);
         }
@@ -167,14 +170,14 @@ namespace Gesture_Go_v1.Controllers
                     string msg = "<h3>Sistema</h3>";
                     msg += "Para alterar sua senha <a href='https://localhost:44375/Home/Redefinir/" + usu.Hash + "'target = '_blank' > clique aqui </ a > ";
                 Funcoes.EnviarEmail(usu.Email, "Redefinição de senha", msg);
-                    TempData["MSG"] = "success|Senha redefinida com sucesso!";
+                    TempData["Msg"] = "Senha redefinida com sucesso!";
                     return RedirectToAction("Index");
                 }
-                TempData["MSG"] = "error|E-mail não encontrado";
-                return View();
+                TempData["Msg"] = "E-mail não encontrado";
+                return View("Index");
             }
-            TempData["MSG"] = "warning|Preencha todos os campos";
-            return View();
+            TempData["Msg"] = "Preencha todos os campos";
+            return View("Index");
         }
 
         public ActionResult Redefinir(string id)
@@ -195,19 +198,19 @@ namespace Gesture_Go_v1.Controllers
                             red.Email = usu.Email;
                             return View(red);
                         }
-                        TempData["MSG"] = "warning|Esse link já expirou!";
+                        TempData["Msg"] = "Esse link já expirou!";
                         return RedirectToAction("Index");
                     }
                     catch
                     {
-                        TempData["MSG"] = "error|Hash inválida!";
+                        TempData["Msg"] = "Hash inválida!";
                         return RedirectToAction("Index");
                     }
                 }
-                TempData["MSG"] = "error|Hash inválida!";
+                TempData["Msg"] = "Hash inválida!";
                 return RedirectToAction("Index");
             }
-            TempData["MSG"] = "error|Acesso inválido!";
+            TempData["Msg"] = "Acesso inválido!";
             return RedirectToAction("Index");
         }
 
@@ -225,13 +228,13 @@ namespace Gesture_Go_v1.Controllers
                     usu.Senha = Funcoes.HashTexto(red.Senha, "SHA512");
                     db.Entry(usu).State = EntityState.Modified;
                     db.SaveChanges();
-                    TempData["MSG"] = "success|Senha redefinida com sucesso!";
+                    TempData["Msg"] = "Senha redefinida com sucesso!";
                     return RedirectToAction("Index");
                 }
-                TempData["MSG"] = "error|E-mail não encontrado";
+                TempData["Msg"] = "E-mail não encontrado";
                 return View(red);
             }
-            TempData["MSG"] = "warning|Preencha todos os campos";
+            TempData["Msg"] = "Preencha todos os campos";
             return View(red);
         }
     }
