@@ -1,6 +1,4 @@
 ﻿@model IEnumerable<Gesture_Go_v1.Models.Imagem>
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/bootstrap")
 
 @{
     Layout = null;
@@ -18,19 +16,19 @@
 </head>
 
 @{
-    
+
     var tempo = DateTime.Now.AddSeconds(ViewBag.segundos);
-    var tempoRestante = TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds;
+    var tempoRestante = Convert.ToInt32(TimeSpan.FromTicks(tempo.Ticks - DateTime.Now.Ticks).TotalSeconds);
     ViewBag.Title = "Pratica";
     int count = 0;
 }
 
 <div class="col-12 mb-1 bg-dark p-1 px-3 ">
     <div class="col-12 row">
-        <div  id="finalizar">@Html.ActionLink(" Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left  btn  btn-outline-secondary p-1 text-white" })</div>
-        @*<div class="offset-7 row"> 
-            <span class="text-white h6 font-weight-lighter  ml-5 text-justify">Avanço Automático <input class="" id="avanco" type="checkbox" /></span>
-        </div>*@
+        <div id="finalizar">@Html.ActionLink(" Finalizar", "PaginaInicialIndex", "PaginaInicial", new { area = "" }, new { @class = "bi bi-arrow-90deg-left  btn  btn-outline-secondary p-1 text-white" })</div>
+        @*<div class="offset-7 row">
+                <span class="text-white h6 font-weight-lighter  ml-5 text-justify">Avanço Automático <input class="" id="avanco" type="checkbox" /></span>
+            </div>*@
     </div>
 </div>
 
@@ -86,20 +84,20 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
 
-            <div class="modal-body p-0" id="modal">  
+            <div class="modal-body p-0" id="modal">
 
                 <div class="col-12 ">
 
                     @*<div class="col-12 my-1">
-                        Imagem Referencia :
-                        <img src="" class="w-25" id="imgPost" style="border-radius: 5px;" />
-                        <input type="hidden" id="imgRefe" />
-                    </div>*@
+                            Imagem Referencia :
+                            <img src="" class="w-25" id="imgPost" style="border-radius: 5px;" />
+                            <input type="hidden" id="imgRefe" />
+                        </div>*@
 
                     <div class="col-12 my-2">
                         Dúvida :
                         <div>
-                            <input type="text"  class="form-control" id="Titulo" />
+                            <input type="text" class="form-control" id="Titulo" />
                         </div>
                     </div>
 
@@ -110,7 +108,7 @@
                         </div>
                     </div>
 
-              
+
                     <div class="col-12 my-3">
                         <hr />
                         <div id="msgerro"></div>
@@ -128,18 +126,20 @@
 
 
 
-    <div class="toast" id="msg" style="position: fixed; top: 10px; right: 10px;" data-delay="4000">
-        <div class="toast-header">
-            <strong class="mr-auto bi bi-chat-dots"> Mensagem</strong>
-            <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="toast-body h6" id="Msg">
-        </div>
+<div class="toast" id="msg" style="position: fixed; top: 10px; right: 10px;" data-delay="4000">
+    <div class="toast-header">
+        <strong class="mr-auto bi bi-chat-dots"> Mensagem</strong>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="toast-body h6" id="Msg">
+    </div>
+</div>
 
 
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")
 
 <script>
 
@@ -181,10 +181,10 @@
             if (TempoRes == 0)
             {
                 //if (document.getElementById('avanco'). == true) {
-                   
+
                 //}
                 $('#carouselExampleControls').carousel('next');
-                
+
                 qtdPratica++;
             }
                 if (TempoRes >= 0) {
@@ -320,7 +320,7 @@
                         $('#msg').toast('show');
                         $('#Msg').text("Pergunta muito pequena ou sem preenchimento !");
                         $("#Msg").addClass("text-danger");
-                        $("#Msg").removeClass("text-success");  
+                        $("#Msg").removeClass("text-success");
                     }
                 }
             });

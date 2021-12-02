@@ -26,13 +26,6 @@ namespace Gesture_Go_v1.Controllers
         }
 
         [Authorize]
-        public ActionResult ProgressoPgInicial()
-        {
-            ViewBag.aa = "Funfanfo";
-            return View();
-        }
-
-        [Authorize]
         public ActionResult PaginaInicialIndex()
         {
             int id = Convert.ToInt32(User.Identity.Name.Split('|')[0]);
@@ -123,24 +116,32 @@ namespace Gesture_Go_v1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult EditarPerfil(Usuario usu, HttpPostedFileBase arquivo)
         {
+            Usuario usuario = db.Usuario.Find(usu.Id);
             if (ModelState.IsValid)
             {
+                usuario.Nome = usu.Nome;
+                
                 if (arquivo != null)
                 {
+                    
                     string nomearq, valor;
 
                     nomearq = DateTime.Now.ToString("yyyyMMddHHmmssfff") + Path.GetExtension(arquivo.FileName);
                     valor = Funcoes.UploadArquivoImagensPerfil(arquivo, nomearq);
                     if (valor == "sucesso")
                     {
-                        Funcoes.ExcluirArquivo(db.Usuario.Find(usu.Id).ImgPerfil);
-                        usu.ImgPerfil = nomearq;
-                        //db.Usuario.Where(x => x.Id == usu.Id).add
+                        Funcoes.ExcluirArquivo(Request.PhysicalApplicationPath + "ImgUsuarios\\" + usu.ImgPerfil);
+                        usuario.ImgPerfil = nomearq;
                     }
                 }
-                db.Entry(usu).State = EntityState.Modified;
+                db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
-                return View(usu);
+                FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, usuario.Id + "|" + usuario.Email + "|" + usuario.Nome + "|" + usuario.PerfilId + "|" + usuario.ImgPerfil, DateTime.Now, DateTime.Now.AddMinutes(30), false, usuario.PerfilId.ToString());
+                string hash = FormsAuthentication.Encrypt(ticket);
+                HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, hash);
+                Response.Cookies.Add(cookie);
+                TempData["Msg"] = "Atalizado com sucesso!";
+                return RedirectToAction("Index");
             }
             TempData["Msg"]="Erro: Campo inválido";
             return View(usu);
