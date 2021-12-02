@@ -320,9 +320,9 @@
     <Content Include="Views\Home\Redefinir.cshtml" />
     <Content Include="Views\AdmImagens\AddImagens.cshtml" />
     <Content Include="Views\Post\MeusPosts.cshtml" />
-    <Content Include="Views\PaginaInicial\Perfil.cshtml" />
     <Content Include="Views\PaginaInicial\Progresso.cshtml" />
     <Content Include="Views\AdmImagens\ExibirImagens.cshtml" />
+    <Content Include="Views\PaginaInicial\EditarPerfil.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
