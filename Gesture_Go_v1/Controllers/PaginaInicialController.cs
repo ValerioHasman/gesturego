@@ -19,11 +19,6 @@ namespace Gesture_Go_v1.Controllers
             return View("PaginaInicialIndex");
         }
 
-        [Authorize]
-        public ActionResult Progresso()
-        {
-            return View();
-        }
 
         [Authorize]
         public ActionResult PaginaInicialIndex()
