@@ -63,7 +63,7 @@
                 @Html.LabelFor(model => model.ImgPerfil, "Imagem para o perfil", htmlAttributes: new { @class = "control-label col" })
                 <div class="col-md-10">
                     <div class="limit">
-                        <img src="~/ImgUsuarios/user.png" alt="Foto de Perfil" id="imginput" />
+                        <img src="~/ImgUsuarios/@Html.DisplayTextFor(model => model.ImgPerfil)" alt="Foto de Perfil" id="imginput" />
                     </div>
                     <input name="arquivo" class="form-control p-1" type="file" id="arquivo" />
                     @Html.ValidationMessageFor(model => model.ImgPerfil, "", new { @class = "text-danger" })
