@@ -1,57 +1,103 @@
 ﻿@model Gesture_Go_v1.Models.Usuario
 
 @{
-    ViewBag.Title = "EditarPerfil";
+    ViewBag.Title = "Editar Perfil";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style>
+    .limit {
+        width: 200px;
+        height: 200px;
+        margin-bottom: 10px;
+    }
 
-<h2>EditarPerfil</h2>
+    #imginput {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        padding: 2%;
+        background-color: #eee;
+        border: 1px solid #ccc;
+        border-radius: 10%;
+        cursor: pointer;
+        transition: background .3s;
+    }
+    #imginput:hover {
+        background-color: #aaa;
+        border: 1px solid #111;
+    }
+</style>
+<div class="p-3  m-1 ml-2 card bg-light shadow">
+    <h2>Editar Perfil</h2>
 
-@using (Html.BeginForm("EditarPerfil","PaginaInicial", FormMethod.Post, new {enctype = "multipart/form-data" }))
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Usuario</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Id)
-    @Html.HiddenFor(model => model.Senha)
-    @Html.HiddenFor(model => model.PerfilId)
+    @using (Html.BeginForm("EditarPerfil", "PaginaInicial", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-horizontal">
+            <h4>Usuário</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+            @Html.HiddenFor(model => model.Senha)
+            @Html.HiddenFor(model => model.PerfilId)
 
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ImgPerfil, "Imagem para o perfil", htmlAttributes: new { @class = "control-label col" })
+                <div class="col-md-10">
+                    <div class="limit">
+                        <img src="~/ImgUsuarios/user.png" alt="Foto de Perfil" id="imginput" />
+                    </div>
+                    <input name="arquivo" class="form-control p-1" type="file" id="arquivo" />
+                    @Html.ValidationMessageFor(model => model.ImgPerfil, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-warning" />
+                </div>
+            </div>
         </div>
-    </div>
+    }
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
+    <div>
+        @Html.ActionLink("Voltar", "Index")
     </div>
-
-    <div class="form-group">
-            @Html.LabelFor(model => model.ImgPerfil, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            <input name="arquivo" class="form-control p-1" type="file" />
-            @Html.ValidationMessageFor(model => model.ImgPerfil, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Save" class="btn btn-warning" />
-        </div>
-    </div>
+    <br>
 </div>
-}
+<script>
+    'use strict'
 
-<div>
-    @Html.ActionLink("Voltar", "Index")
-</div>
+    let foto = document.getElementById('imginput');
+    let arquivo = document.getElementById('arquivo');
+
+    foto.addEventListener('click', () => {
+        file.click();
+    });
+
+    arquivo.addEventListener('change', (e) => {
+        let reader = new FileReader();
+        reader.onload = () => {
+            foto.src = reader.result;
+        }
+        reader.readAsDataURL(arquivo.files[0])
+    });
+</script>
