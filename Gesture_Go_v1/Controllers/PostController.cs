@@ -16,7 +16,7 @@ namespace Gesture_Go_v1.Controllers
         [Authorize]
         public ActionResult Posts()
         {
-            var posts = db.Posts.Where(x => x.Pos_Status).ToList();
+            var posts = db.Posts.Where(x => x.Pos_Status).OrderByDescending(x => x.data).ToList();
             return View(posts);
         }
 

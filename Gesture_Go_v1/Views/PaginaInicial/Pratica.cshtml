@@ -88,12 +88,6 @@
 
                 <div class="col-12 ">
 
-                    @*<div class="col-12 my-1">
-                            Imagem Referencia :
-                            <img src="" class="w-25" id="imgPost" style="border-radius: 5px;" />
-                            <input type="hidden" id="imgRefe" />
-                        </div>*@
-
                     <div class="col-12 my-2">
                         Dúvida :
                         <div>
@@ -158,7 +152,7 @@
 
     function PegaId() {
         var item = $(".active")
-        var li = item.find("#item_id")
+        var li = item.find("#item_Id")
         var id = li.val();
         return id;
     }
@@ -177,12 +171,9 @@
 
 
         var _tick = setInterval(function () {
-            PegaId();
             if (TempoRes == 0)
             {
-                //if (document.getElementById('avanco'). == true) {
 
-                //}
                 $('#carouselExampleControls').carousel('next');
 
                 qtdPratica++;
@@ -272,14 +263,11 @@
 
         $("#Postar").click(function () {
 
-            var nomeImg = PegaImg();
-            $("#msgerro").text(nomeImg);
-
             var imagem = $("#arquivo").get(0).files[0];
-            var img = PegaId();
+            var id = PegaId();
             var titulo = $("#Titulo").val();
             var formData = new FormData();
-            formData.append('id', img);
+            formData.append('id', id);
             formData.append('titulo', titulo);
             formData.append('imagem', imagem);
 
